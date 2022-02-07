@@ -4,8 +4,8 @@
 
 - [Description](#description)
 - [Migrating from bash](#migrating-from-bash)
-- [Installing Oh My Zsh](#installing-oh-my-zsh)
 - [Setup](#setup)
+- [Installing Oh My Zsh & plugins](#installing-oh-my-zsh--plugins)
 
 ## Description
 
