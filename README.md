@@ -32,8 +32,7 @@ Reboot your system
 Clone the repo into `~/.local/share` directory
 
 ```zsh
-cd ~/.local/share
-git clone git@github.com:pacifi5t/dotfiles.git
+git clone git@github.com:pacifi5t/dotfiles.git ~/.local/share/dotfiles
 ```
 
 Remove existing files
