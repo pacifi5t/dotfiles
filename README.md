@@ -11,6 +11,8 @@
 
 A repo with various config files with setup guide. Useful for Linux with `zsh` as shell or macOS (which includes `zsh` preinstalled). Setup guide includes installing Oh My Zsh that helps manage plugins & standartize installation process.
 
+**NOTE**: I created this repo to help me bootstrap Linux or macOS shell. You are free to fork it, but make sure to change user name inside `.zshrc` and replace `.gitconfig` with yours.
+
 ## Migrating from bash
 
 Change your shell to `zsh`
