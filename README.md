@@ -47,10 +47,9 @@ rm -f ~/.p10k.zsh
 Create symbolic links for `.zshrc` & other configs
 
 ```zsh
-cd dotfiles
-ln -s .zshrc ~/.zshrc
-ln -s .gitconfig ~/.gitconfig
-ln -s .p10k.zsh ~/.p10k.zsh
+ln -s ~/.local/share/dotfiles/.zshrc ~/.zshrc
+ln -s ~/.local/share/dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/.local/share/dotfiles/.p10k.zsh ~/.p10k.zsh
 ```
 
 ## Installing Oh My Zsh & plugins
