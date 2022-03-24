@@ -5,26 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Flutter SDK
-export PATH=$PATH:/opt/flutter/bin
-
-# Local binaries
+# If you come from bash you might have to change your $PATH.
 export PATH=$PATH:$HOME/.local/bin
-
-# melos executable
-export PATH=$PATH:$HOME/.pub-cache/bin
-
-# For developing with Vulkan
-export VK_LAYER_PATH=/etc/vulkan/explicit_layer.d
-
-# For Android sdkmanager
-export REPO_OS_OVERRIDE=linux
-
-# Make mangohud able to run almost anywhere
-export MANGOHUD_DLSYM=1
-
-# Map Google Chrome to Chromium
-export CHROME_EXECUTABLE=chromium
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -101,17 +83,35 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Flutter SDK
+export PATH=$PATH:/opt/flutter/bin
+
+# melos executable
+export PATH=$PATH:$HOME/.pub-cache/bin
+
+# For developing with Vulkan
+export VK_LAYER_PATH=/etc/vulkan/explicit_layer.d
+
+# For Android sdkmanager
+export REPO_OS_OVERRIDE=linux
+
+# Make mangohud able to run almost anywhere
+export MANGOHUD_DLSYM=1
+
+# Map Google Chrome to Chromium
+export CHROME_EXECUTABLE=chromium
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='micro'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
