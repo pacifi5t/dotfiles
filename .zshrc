@@ -89,18 +89,6 @@ export PATH=$PATH:/opt/flutter/bin
 # melos executable
 export PATH=$PATH:$HOME/.pub-cache/bin
 
-# For developing with Vulkan
-export VK_LAYER_PATH=/etc/vulkan/explicit_layer.d
-
-# For Android sdkmanager
-export REPO_OS_OVERRIDE=linux
-
-# Make mangohud able to run almost anywhere
-export MANGOHUD_DLSYM=1
-
-# Map Google Chrome to Chromium
-export CHROME_EXECUTABLE=chromium
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
