@@ -84,7 +84,11 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # Flutter SDK
-export PATH=$PATH:/opt/flutter/bin
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	export PATH=$PATH:$HOME/Library/Flutter/bin
+else
+	export PATH=$PATH:/opt/flutter/bin
+fi
 
 # melos executable
 export PATH=$PATH:$HOME/.pub-cache/bin
