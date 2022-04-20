@@ -3,3 +3,5 @@
 	email = thequasar7@gmail.com
 [pull]
 	rebase = false
+[alias]
+	graph = log --graph --oneline --decorate
