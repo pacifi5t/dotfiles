@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export PATH=$PATH:$HOME/Library/Flutter/bin
 else
-	export PATH=$PATH:/opt/flutter/bin
+	export PATH=$PATH:$HOME/.local/lib/flutter/bin
 fi
 
 # melos executable
