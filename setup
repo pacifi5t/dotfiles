@@ -1,0 +1,16 @@
+#!/bin/python3
+
+import os, re
+
+home = os.environ["HOME"]
+this_dir = os.path.abspath(".")
+
+filter_regex = r"(\.git$)|^\w+.*"
+
+files = [x for x in os.listdir(this_dir) if not re.match(filter_regex, x)]
+
+os.system("rm -f ~/.bash*")
+
+for each in files:
+    os.system("rm -f ~/" + each)
+    os.system("ln -s " + this_dir + "/" + each + " ~/" + each)
