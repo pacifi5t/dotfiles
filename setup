@@ -1,16 +1,34 @@
 #!/usr/bin/python3
 
-import os, re
+import os
+
+
+def create_symlink(abspath: str, symlink_path: str):
+    try:
+        os.remove(symlink_path)
+    except FileNotFoundError:
+        pass
+    os.symlink(abspath, symlink_path)
+    print(symlink_path + "\t->\t" + abspath)
+
 
 home = os.environ["HOME"]
 this_dir = os.path.abspath(".")
 
-filter_regex = r"(\.git$)|^\w+.*"
+excluded = [".git", "setup", "README.md"]
 
-files = [x for x in os.listdir(this_dir) if not re.match(filter_regex, x)]
+contents = [x for x in os.listdir(this_dir) if not x in excluded]
 
 os.system("rm -f ~/.bash*")
 
-for each in files:
-    os.system("rm -f ~/" + each)
-    os.system("ln -s " + this_dir + "/" + each + " ~/" + each)
+for c in contents:
+    abspath = os.path.abspath(c)
+    if os.path.isfile(abspath):
+        create_symlink(abspath, os.path.join(home, c))
+    else:
+        for root, _, files in os.walk(abspath):
+            for file in files:
+                abspath = os.path.join(root, file)
+                symlink_path = os.path.join(home, os.path.relpath(abspath, this_dir))
+                os.makedirs(os.path.dirname(symlink_path), exist_ok=True)
+                create_symlink(abspath, symlink_path)
