@@ -9,7 +9,7 @@ fi
 export PATH=$PATH:$HOME/.local/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$XDG_DATA_HOME"/oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -85,13 +85,25 @@ source $ZSH/oh-my-zsh.sh
 
 # Flutter SDK
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	export PATH=$PATH:$HOME/Library/Flutter/bin
+  export PATH=$PATH:$HOME/Library/Flutter/bin
 else
-	export PATH=$PATH:$HOME/.local/lib/flutter/bin
+  export PATH=$PATH:$HOME/.local/lib/flutter/bin
 fi
 
 # melos executable
 export PATH=$PATH:$HOME/.pub-cache/bin
+
+# cargo binaries
+export PATH=$PATH:$CARGO_HOME/bin
+
+# GTK2 config
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
+# Node REPL history file
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+
+# Default wine prefix
+export WINEPREFIX="$XDG_DATA_HOME"/wine
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
