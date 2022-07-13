@@ -9,3 +9,5 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+export VCPKG_ROOT="$XDG_DATA_HOME"/vcpkg
