@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
+# Local binaries
 export PATH=$PATH:$HOME/.local/bin
 
 # Path to your oh-my-zsh installation.
@@ -82,28 +82,6 @@ plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# Flutter SDK
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  export PATH=$PATH:$HOME/Library/Flutter/bin
-else
-  export PATH=$PATH:$HOME/.local/lib/flutter/bin
-fi
-
-# melos executable
-export PATH=$PATH:$HOME/.pub-cache/bin
-
-# cargo binaries
-export PATH=$PATH:$CARGO_HOME/bin
-
-# GTK2 config
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-
-# Node REPL history file
-export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
-
-# Default wine prefix
-export WINEPREFIX="$XDG_DATA_HOME"/wine
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
