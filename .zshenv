@@ -26,6 +26,9 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # GnuPG home
   export GNUPGHOME=$XDG_DATA_HOME/gnupg
 
+  # Fix mangohud for some OpenGL apps & games 
+  export MANGOHUD_DLSYM=1
+
   # Default Wine prefix
   export WINEPREFIX=$XDG_DATA_HOME/wine
 
