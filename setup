@@ -3,13 +3,13 @@
 import os
 
 
-def create_symlink(abspath: str, symlink_path: str):
+def create_symlink(src: str, dst: str):
     try:
-        os.remove(symlink_path)
+        os.remove(dst)
     except FileNotFoundError:
         pass
-    os.symlink(abspath, symlink_path)
-    print(symlink_path + "\t->\t" + abspath)
+    os.symlink(src, dst)
+    print(f"{dst}{' ' * 4}->{' ' * 4}{src}")
 
 
 home = os.environ["HOME"]
@@ -17,7 +17,7 @@ this_dir = os.path.abspath(".")
 
 excluded = [".git", ".gitignore", ".idea", "setup", "README.md", "guides"]
 
-contents = [x for x in os.listdir(this_dir) if not x in excluded]
+contents = [x for x in os.listdir(this_dir) if x not in excluded]
 
 os.system("rm -f ~/.bash*")
 
