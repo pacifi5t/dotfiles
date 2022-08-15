@@ -40,4 +40,7 @@ fi
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # adb for Android
   export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+
+  # Path for libraries installed with Homebrew
+  export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/lib
 fi
