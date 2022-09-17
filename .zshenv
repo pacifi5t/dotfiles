@@ -29,9 +29,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Fix mangohud for some OpenGL apps & games 
   export MANGOHUD_DLSYM=1
 
-  # Default Wine prefix
-  export WINEPREFIX=$XDG_DATA_HOME/wine
-
   # GTK2 config
   export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
 fi
