@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 
 import os
+from sys import platform
+
+home = os.environ["HOME"]
+common_dir = os.path.abspath("common")
+linux_dir = os.path.abspath("linux")
 
 
 def create_symlink(src: str, dst: str):
@@ -12,23 +17,23 @@ def create_symlink(src: str, dst: str):
     print(f"{dst}{' ' * 4}->{' ' * 4}{src}")
 
 
-home = os.environ["HOME"]
-this_dir = os.path.abspath(".")
+def link_files_from(directory: str):
+    contents = os.listdir(directory)
+    for c in contents:
+        abspath = os.path.join(directory, c)
+        if os.path.isfile(abspath):
+            create_symlink(abspath, os.path.join(home, c))
+        else:
+            for root, _, files in os.walk(abspath):
+                for file in files:
+                    abspath = os.path.join(root, file)
+                    symlink_path = os.path.join(home, os.path.relpath(abspath, directory))
+                    os.makedirs(os.path.dirname(symlink_path), exist_ok=True)
+                    create_symlink(abspath, symlink_path)
 
-excluded = [".git", ".gitignore", ".idea", "setup", "README.md", "guides"]
-
-contents = [x for x in os.listdir(this_dir) if x not in excluded]
 
 os.system("rm -f ~/.bash*")
 
-for c in contents:
-    abspath = os.path.abspath(c)
-    if os.path.isfile(abspath):
-        create_symlink(abspath, os.path.join(home, c))
-    else:
-        for root, _, files in os.walk(abspath):
-            for file in files:
-                abspath = os.path.join(root, file)
-                symlink_path = os.path.join(home, os.path.relpath(abspath, this_dir))
-                os.makedirs(os.path.dirname(symlink_path), exist_ok=True)
-                create_symlink(abspath, symlink_path)
+link_files_from(common_dir)
+if platform == "linux":
+    link_files_from(linux_dir)
