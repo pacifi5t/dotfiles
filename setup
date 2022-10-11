@@ -6,6 +6,7 @@ from sys import platform
 home = os.environ["HOME"]
 common_dir = os.path.abspath("common")
 linux_dir = os.path.abspath("linux")
+macos_dir = os.path.abspath("macos")
 
 
 def create_symlink(src: str, dst: str):
@@ -37,3 +38,5 @@ os.system("rm -f ~/.bash*")
 link_files_from(common_dir)
 if platform == "linux":
     link_files_from(linux_dir)
+elif platform == "darwin":
+    link_files_from(macos_dir)
