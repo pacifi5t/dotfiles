@@ -18,7 +18,8 @@ export PATH=$PATH:$HOME/.pub-cache/bin
 # vcpkg main dir
 export VCPKG_ROOT=$XDG_DATA_HOME/vcpkg
 
-# Node REPL history file
+# Node & npm
+export NPM_CONFIG_PREFIX=$HOME/.local
 export NODE_REPL_HISTORY=$XDG_DATA_HOME/node_repl_history
 
 # Linux specific variables
