@@ -83,6 +83,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Shortcut for quick access to dotfiles repo
+export dotfiles=$XDG_DATA_HOME/dotfiles
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
