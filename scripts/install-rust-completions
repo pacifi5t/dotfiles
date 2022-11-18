@@ -1,0 +1,8 @@
+#!/usr/bin/zsh
+
+completions=$ZSH/completions
+
+mkdir $completions
+
+rustup completions zsh > $completions/_rustup
+rustup completions zsh cargo > $completions/_cargo
