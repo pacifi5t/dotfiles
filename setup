@@ -19,8 +19,13 @@ def create_symlink(src: str, dst: str):
 
 
 def link_files_from(directory: str):
+    excluded_files = [".localenv"]
     contents = os.listdir(directory)
+
     for c in contents:
+        if os.path.basename(c) in excluded_files:
+            continue
+
         abspath = os.path.join(directory, c)
         if os.path.isfile(abspath):
             create_symlink(abspath, os.path.join(home, c))
@@ -40,3 +45,7 @@ if platform == "linux":
     link_files_from(linux_dir)
 elif platform == "darwin":
     link_files_from(macos_dir)
+
+localenv_file = os.path.abspath("common/.localenv")
+if not os.path.exists(localenv_file):
+    os.system(f"touch {localenv_file}")

@@ -50,3 +50,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export VK_ICD_FILENAMES=$VULKAN_SDK/share/vulkan/icd.d/MoltenVK_icd.json
   export VK_DRIVER_FILES=$VULKAN_SDK/share/vulkan/icd.d/MoltenVK_icd.json
 fi
+
+# Local environment tailored for a specific machine (invisible for git)
+source $XDG_DATA_HOME/dotfiles/common/.localenv
