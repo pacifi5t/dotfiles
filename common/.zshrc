@@ -11,6 +11,9 @@ export PATH=$PATH:$HOME/.local/bin
 # Path to your oh-my-zsh installation.
 export ZSH=$XDG_DATA_HOME/oh-my-zsh
 
+# Zsh history file
+export HISTFILE=$XDG_STATE_HOME/zsh/history
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -111,6 +114,7 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias mc="echo \"We don't use it here :)\""
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 
 # Local config tailored for a specific machine (invisible for git)
 source $XDG_DATA_HOME/dotfiles/common/.localrc

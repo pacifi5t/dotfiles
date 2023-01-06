@@ -22,6 +22,12 @@ export VCPKG_ROOT=$XDG_DATA_HOME/vcpkg
 export NPM_CONFIG_PREFIX=$HOME/.local
 export NODE_REPL_HISTORY=$XDG_DATA_HOME/node_repl_history
 
+# Python
+export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
+
+# less history
+export LESSHISTFILE=$XDG_DATA_HOME/less/history
+
 # Linux specific variables
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # GnuPG home
