@@ -112,5 +112,8 @@ fi
 
 alias mc="echo \"We don't use it here :)\""
 
+# Local config tailored for a specific machine (invisible for git)
+source $XDG_DATA_HOME/dotfiles/common/.localrc
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

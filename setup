@@ -19,7 +19,7 @@ def create_symlink(src: str, dst: str):
 
 
 def link_files_from(directory: str):
-    excluded_files = [".localenv"]
+    excluded_files = [".localenv", ".localrc"]
     contents = os.listdir(directory)
 
     for c in contents:
@@ -27,15 +27,23 @@ def link_files_from(directory: str):
             continue
 
         abspath = os.path.join(directory, c)
+
         if os.path.isfile(abspath):
             create_symlink(abspath, os.path.join(home, c))
-        else:
-            for root, _, files in os.walk(abspath):
-                for file in files:
-                    abspath = os.path.join(root, file)
-                    symlink_path = os.path.join(home, os.path.relpath(abspath, directory))
-                    os.makedirs(os.path.dirname(symlink_path), exist_ok=True)
-                    create_symlink(abspath, symlink_path)
+            continue
+
+        for root, _, files in os.walk(abspath):
+            for file in files:
+                abspath = os.path.join(root, file)
+                symlink_path = os.path.join(home, os.path.relpath(abspath, directory))
+                os.makedirs(os.path.dirname(symlink_path), exist_ok=True)
+                create_symlink(abspath, symlink_path)
+
+
+def create_localfile(filename: str):
+    localenv_file = os.path.abspath(f"common/{filename}")
+    if not os.path.exists(localenv_file):
+        os.system(f"touch {localenv_file}")
 
 
 os.system("rm -f ~/.bash*")
@@ -46,6 +54,5 @@ if platform == "linux":
 elif platform == "darwin":
     link_files_from(macos_dir)
 
-localenv_file = os.path.abspath("common/.localenv")
-if not os.path.exists(localenv_file):
-    os.system(f"touch {localenv_file}")
+create_localfile(".localenv")
+create_localfile(".localrc")
