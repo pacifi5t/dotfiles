@@ -8,6 +8,8 @@ common_dir = os.path.abspath("common")
 linux_dir = os.path.abspath("linux")
 macos_dir = os.path.abspath("macos")
 
+excluded_files = [".localenv", ".localrc", ".DS_Store"]
+
 
 def create_symlink(src: str, dst: str):
     try:
@@ -19,25 +21,16 @@ def create_symlink(src: str, dst: str):
 
 
 def link_files_from(directory: str):
-    excluded_files = [".localenv", ".localrc"]
-    contents = os.listdir(directory)
+    for root, _, files in os.walk(directory):
+        for file in files:
+            if file in excluded_files:
+                continue
 
-    for c in contents:
-        if os.path.basename(c) in excluded_files:
-            continue
+            abspath = os.path.join(root, file)
+            symlink_path = os.path.join(home, os.path.relpath(abspath, directory))
 
-        abspath = os.path.join(directory, c)
-
-        if os.path.isfile(abspath):
-            create_symlink(abspath, os.path.join(home, c))
-            continue
-
-        for root, _, files in os.walk(abspath):
-            for file in files:
-                abspath = os.path.join(root, file)
-                symlink_path = os.path.join(home, os.path.relpath(abspath, directory))
-                os.makedirs(os.path.dirname(symlink_path), exist_ok=True)
-                create_symlink(abspath, symlink_path)
+            os.makedirs(os.path.dirname(symlink_path), exist_ok=True)
+            create_symlink(abspath, symlink_path)
 
 
 def create_localfile(filename: str):
