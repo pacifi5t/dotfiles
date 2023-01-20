@@ -23,4 +23,9 @@ vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 
 -- Change cursor shape to beam on exit
-vim.cmd "aug Shape | au VimLeave,VimSuspend * set guicursor=a:ver90 | aug END"
+vim.cmd "au VimLeave,VimSuspend * set guicursor=a:ver90"
+
+-- CursorLine config
+vim.opt.cursorline = true
+vim.cmd "au ColorScheme * highlight clear CursorLine"
+vim.cmd "au ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold"
