@@ -21,3 +21,6 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
+
+-- Change cursor shape to beam on exit
+vim.cmd "aug Shape | au VimLeave,VimSuspend * set guicursor=a:ver90 | aug END"
