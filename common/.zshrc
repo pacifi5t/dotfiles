@@ -116,6 +116,10 @@ fi
 alias mc="echo \"We don't use it here :)\""
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 
+# venv creation & activation
+alias vv='python3 -m venv .venv'
+alias va='source .venv/bin/activate'
+
 # Local config tailored for a specific machine (invisible for git)
 source $XDG_DATA_HOME/dotfiles/common/.localrc
 
