@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#! zsh
 
 completions=$ZSH/completions
 

@@ -1,15 +1,12 @@
 # dotfiles
 
+A repo with various config files with setup guide. Useful for Linux with `zsh` as shell or macOS (which includes `zsh` preinstalled). Setup guide includes installing Oh My Zsh that helps manage plugins & standartize installation process.
+
 ## Table of contents
 
-- [Description](#description)
 - [Migrating from bash](#migrating-from-bash)
 - [Installing Oh My Zsh & plugins](#installing-oh-my-zsh--plugins)
 - [Setup](#setup)
-
-## Description
-
-A repo with various config files with setup guide. Useful for Linux with `zsh` as shell or macOS (which includes `zsh` preinstalled). Setup guide includes installing Oh My Zsh that helps manage plugins & standartize installation process.
 
 ## Migrating from bash
 
