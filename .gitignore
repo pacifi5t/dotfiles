@@ -2,6 +2,5 @@
 .vscode
 
 common/.localenv
-common/.localrc
 
 **/.DS_Store

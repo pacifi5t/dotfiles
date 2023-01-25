@@ -8,7 +8,7 @@ common_dir = os.path.abspath("common")
 linux_dir = os.path.abspath("linux")
 macos_dir = os.path.abspath("macos")
 
-excluded_files = [".localenv", ".localrc", ".DS_Store"]
+excluded_files = [".localenv", ".DS_Store"]
 
 
 def create_symlink(src: str, dst: str):
@@ -33,12 +33,6 @@ def link_files_from(directory: str):
             create_symlink(abspath, symlink_path)
 
 
-def create_localfile(filename: str):
-    localenv_file = os.path.abspath(f"common/{filename}")
-    if not os.path.exists(localenv_file):
-        os.system(f"touch {localenv_file}")
-
-
 os.system("rm -f ~/.bash*")
 
 link_files_from(common_dir)
@@ -46,6 +40,3 @@ if platform == "linux":
     link_files_from(linux_dir)
 elif platform == "darwin":
     link_files_from(macos_dir)
-
-create_localfile(".localenv")
-create_localfile(".localrc")

@@ -49,5 +49,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export LIBRARY_PATH=${LIBRARY_PATH:-}/opt/homebrew/lib
 fi
 
-# Local environment tailored for a specific machine (invisible for git)
-source $XDG_DATA_HOME/dotfiles/common/.localenv
+# Local environment for a specific machine (invisible for git)
+source $XDG_DATA_HOME/dotfiles/common/.localenv 2> /dev/null
