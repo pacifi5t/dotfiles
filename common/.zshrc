@@ -43,7 +43,8 @@ alias vv='python3 -m venv .venv'
 alias va='source .venv/bin/activate'
 
 # Other
-alias dotfiles=$XDG_DATA_HOME/dotfiles
+alias dotfiles='cd $XDG_DATA_HOME/dotfiles'
+alias cl='clear'
 alias mc="echo \"We don't use it here :)\""
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 
