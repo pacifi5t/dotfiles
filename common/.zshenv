@@ -33,7 +33,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # GnuPG home
   export GNUPGHOME=$XDG_DATA_HOME/gnupg
 
-  # Fix mangohud for some OpenGL apps & games 
+  # Enable MangoHud globally (only Vulkan) & fix MangoHud for OpenGL
+  export MANGOHUD=1
   export MANGOHUD_DLSYM=1
 
   # GTK2 config
