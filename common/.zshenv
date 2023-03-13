@@ -10,6 +10,7 @@ export GRADLE_USER_HOME=$XDG_DATA_HOME/gradle
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export PATH=$PATH:$CARGO_HOME/bin
+export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 
 # Flutter SDK
 export PATH=$PATH:$XDG_DATA_HOME/flutter/bin
