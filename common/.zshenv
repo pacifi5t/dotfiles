@@ -29,6 +29,9 @@ export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
 # less history
 export LESSHISTFILE=$XDG_DATA_HOME/less/history
 
+# ccache dir
+export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
+
 # Linux specific variables
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # GnuPG home
