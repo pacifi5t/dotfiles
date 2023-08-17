@@ -24,12 +24,16 @@ export NODE_REPL_HISTORY=$XDG_DATA_HOME/node_repl_history
 
 # Python
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
+export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
 
 # less history
 export LESSHISTFILE=$XDG_DATA_HOME/less/history
 
 # ccache dir
-export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
+export CCACHE_DIR=$XDG_CACHE_HOME/ccache
+
+# PostgreSQL
+export PSQL_HISTORY=$XDG_DATA_HOME/psql_history
 
 # Linux specific variables
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -51,6 +55,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   # Path for libraries installed with Homebrew
   export LIBRARY_PATH=${LIBRARY_PATH:-}/opt/homebrew/lib
+
+  # Matplotlib config dir
+  export MPLCONFIGDIR=$XDG_CONFIG_HOME/matplotlib
 fi
 
 # Local environment for a specific machine (invisible for git)
