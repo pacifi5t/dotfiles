@@ -38,8 +38,10 @@ fi
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# venv creation & activation
-alias vv='python3 -m venv .venv'
+# Python, pip, venv creation & activation
+alias python='python3'
+alias pip='pip3'
+alias vv='python -m venv .venv'
 alias va='source .venv/bin/activate'
 
 # Other
