@@ -33,6 +33,10 @@ else
   export EDITOR='nvim'
 fi
 
+# Increase history size
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
