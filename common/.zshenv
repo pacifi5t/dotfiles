@@ -46,6 +46,9 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   # GTK2 config
   export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
+
+  # Rust std library path
+  export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$XDG_DATA_HOME/rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib
 fi
 
 # macOS specific variables
@@ -54,10 +57,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 
   # Path for libraries installed with Homebrew
-  export LIBRARY_PATH=${LIBRARY_PATH:-}/opt/homebrew/lib
+  export LIBRARY_PATH=${LIBRARY_PATH:+$LIBRARY_PATH:}/opt/homebrew/lib
 
   # Matplotlib config dir
   export MPLCONFIGDIR=$XDG_CONFIG_HOME/matplotlib
+
+  # Rust std library path
+  export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH:+$DYLD_LIBRARY_PATH:}$XDG_DATA_HOME/rustup/toolchains/stable-aarch64-apple-darwin/lib
 fi
 
 # Local environment for a specific machine (invisible for git)
