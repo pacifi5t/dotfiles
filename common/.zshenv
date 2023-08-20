@@ -35,6 +35,10 @@ export CCACHE_DIR=$XDG_CACHE_HOME/ccache
 # PostgreSQL
 export PSQL_HISTORY=$XDG_DATA_HOME/psql_history
 
+# AWS CLI
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+
 # Linux specific variables
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # GnuPG home
