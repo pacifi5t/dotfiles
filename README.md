@@ -18,6 +18,12 @@ Change your shell to `zsh`
 chsh -s /bin/zsh
 ```
 
+Change Zsh config directory by defining ZDOTDIR at `/etc/zsh/zshenv` (or `/etc/zshenv` for some systems)
+
+```sh
+sudo sh -c "echo 'export ZDOTDIR=\$HOME/.config/zsh' >> /etc/zsh/zshenv"
+```
+
 ### Installing Oh My Zsh & plugins
 
 Oh My Zsh
