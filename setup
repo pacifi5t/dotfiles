@@ -8,7 +8,7 @@ common_dir = os.path.abspath("common")
 linux_dir = os.path.abspath("linux")
 macos_dir = os.path.abspath("macos")
 
-excluded_files = [".localenv", ".DS_Store"]
+excluded_files = [".DS_Store"]
 
 
 def create_symlink(src: str, dst: str):

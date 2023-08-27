@@ -72,6 +72,3 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # Rust std library path
   export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH:+$DYLD_LIBRARY_PATH:}$XDG_DATA_HOME/rustup/toolchains/stable-aarch64-apple-darwin/lib
 fi
-
-# Local environment for a specific machine (invisible for git)
-source $XDG_DATA_HOME/dotfiles/common/.localenv 2> /dev/null
