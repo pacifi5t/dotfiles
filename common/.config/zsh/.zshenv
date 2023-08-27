@@ -6,6 +6,9 @@ export XDG_CACHE_HOME=$HOME/.cache
 # Local binaries
 export PATH=$PATH:$HOME/.local/bin
 
+# Android SDK
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+
 # Gradle home dir
 export GRADLE_USER_HOME=$XDG_DATA_HOME/gradle
 
