@@ -54,5 +54,6 @@ alias cl='clear'
 alias mc="echo \"We don't use it here :)\""
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit .p10k.zsh.
+p10k_path=$XDG_DATA_HOME/dotfiles/common/.config/zsh/.p10k.zsh
+[[ ! -f $p10k_path ]] || source $p10k_path
