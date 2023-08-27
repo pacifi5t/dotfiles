@@ -28,8 +28,11 @@ else
 fi
 
 # Increase history size
-export HISTFILESIZE=1000000
-export HISTSIZE=1000000
+export HISTSIZE=1000
+export SAVEHIST=100000
+
+# Append history incrementally
+setopt incappendhistory
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
