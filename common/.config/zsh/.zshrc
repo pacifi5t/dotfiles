@@ -8,6 +8,9 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=$XDG_DATA_HOME/oh-my-zsh
 
+# Zsh history file
+export HISTFILE=$XDG_STATE_HOME/zsh/history
+
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 

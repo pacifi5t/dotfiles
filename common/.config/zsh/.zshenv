@@ -3,9 +3,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CACHE_HOME=$HOME/.cache
 
-# Zsh history file
-export HISTFILE=$XDG_STATE_HOME/zsh/history
-
 # Local binaries
 export PATH=$PATH:$HOME/.local/bin
 
