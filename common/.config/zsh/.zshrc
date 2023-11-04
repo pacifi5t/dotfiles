@@ -42,11 +42,12 @@ setopt incappendhistory
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# Python, pip, venv creation & activation
+# Python, pip, venv shortcuts
 alias python='python3'
 alias pip='pip3'
 alias vv='python -m venv .venv'
 alias va='source .venv/bin/activate'
+alias vd='deactivate'
 
 # Other
 alias dotfiles='cd $XDG_DATA_HOME/dotfiles'
