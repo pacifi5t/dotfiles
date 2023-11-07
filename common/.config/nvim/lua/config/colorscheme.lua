@@ -1,5 +1,4 @@
--- Nord
-vim.g.nord_italic = false
-vim.g.nord_bold = false
+-- Gruvbox
 
-vim.cmd.colorscheme "nord"
+vim.o.background = "dark"
+vim.cmd.colorscheme "gruvbox"

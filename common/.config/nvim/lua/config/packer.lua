@@ -34,5 +34,5 @@ return require("packer").startup(function(use)
 
     -- Color schemes
     use "savq/melange-nvim"
-    use "shaunsingh/nord.nvim"
+    use "ellisonleao/gruvbox.nvim"
 end)
