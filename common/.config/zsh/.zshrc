@@ -43,8 +43,6 @@ setopt incappendhistory
 # For a full list of active aliases, run `alias`.
 
 # Python, pip, venv shortcuts
-alias python='python3'
-alias pip='pip3'
 alias vv='python -m venv .venv'
 alias va='source .venv/bin/activate'
 alias vd='deactivate'
