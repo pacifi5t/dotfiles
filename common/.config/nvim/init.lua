@@ -1,4 +1,4 @@
-require("config.packer")
+require("plugins")
 require("config.remaps")
 require("config.settings")
 require("config.colorscheme")
