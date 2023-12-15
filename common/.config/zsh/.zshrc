@@ -49,9 +49,9 @@ alias vd='deactivate'
 
 # Other
 alias dotfiles='cd $XDG_DATA_HOME/dotfiles'
-alias cl='clear'
-alias mc="echo \"We don't use it here :)\""
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+alias rr='ranger'
+alias lg='lazygit'
 
 # To customize prompt, run `p10k configure` or edit .p10k.zsh.
 p10k_path=$XDG_DATA_HOME/dotfiles/common/.config/zsh/.p10k.zsh
