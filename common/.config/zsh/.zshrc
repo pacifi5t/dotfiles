@@ -11,8 +11,13 @@ export ZSH=$XDG_DATA_HOME/oh-my-zsh
 # Zsh history file
 export HISTFILE=$XDG_STATE_HOME/zsh/history
 
+# Prompt customization
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+if [[ "$TTY" == "/dev/tty"* && "$OSTYPE" == "linux-gnu"* ]]; then
+  PS1='%F{cyan}%~%f %# '
+else
+  ZSH_THEME="powerlevel10k/powerlevel10k"
+fi
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
