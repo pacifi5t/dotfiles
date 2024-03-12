@@ -64,7 +64,3 @@ eval "$(pyenv init - 2> /dev/null)"
 # To customize prompt, run `p10k configure` or edit .p10k.zsh.
 p10k_path=$XDG_DATA_HOME/dotfiles/common/.config/zsh/.p10k.zsh
 [[ ! -f $p10k_path ]] || source $p10k_path
-
-if [[ "$TERM_PROGRAM" == "vscode" ]]; then
-  source "$(code --locate-shell-integration-path zsh)"
-fi
