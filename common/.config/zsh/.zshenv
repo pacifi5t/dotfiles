@@ -30,6 +30,7 @@ export PYENV_ROOT=$XDG_DATA_HOME/pyenv
 export PATH=$PATH:$PYENV_ROOT/bin
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
 export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
+export KERAS_HOME="${XDG_STATE_HOME}/keras"
 
 # less history
 export LESSHISTFILE=$XDG_DATA_HOME/less/history
