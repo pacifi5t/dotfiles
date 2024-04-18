@@ -1,6 +1,8 @@
 [user]
 	name = Andrii Derhach
 	email = thequasar7@gmail.com
+[core]
+	excludesFile = ~/.config/git/ignore
 [pull]
 	rebase = false
 [alias]
