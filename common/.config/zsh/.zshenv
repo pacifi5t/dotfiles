@@ -69,6 +69,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # Path for libraries installed with Homebrew
   export LIBRARY_PATH=${LIBRARY_PATH:+$LIBRARY_PATH:}/opt/homebrew/lib
 
+  # CocoaPods
+  export CP_HOME_DIR="$XDG_DATA_HOME"/cocoapods
+
   # Matplotlib config dir
   export MPLCONFIGDIR=$XDG_CONFIG_HOME/matplotlib
 
