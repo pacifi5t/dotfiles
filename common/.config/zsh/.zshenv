@@ -30,7 +30,7 @@ export PYENV_ROOT=$XDG_DATA_HOME/pyenv
 export PATH=$PATH:$PYENV_ROOT/bin
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
 export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
-export KERAS_HOME="${XDG_STATE_HOME}/keras"
+export KERAS_HOME=$XDG_STATE_HOME/keras
 
 # RenPy saves directory
 export RENPY_PATH_TO_SAVES=$XDG_DATA_HOME/renpy
@@ -45,8 +45,8 @@ export CCACHE_DIR=$XDG_CACHE_HOME/ccache
 export PSQL_HISTORY=$XDG_DATA_HOME/psql_history
 
 # AWS CLI
-export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
-export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
+export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 
 # Linux specific variables
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -73,7 +73,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export LIBRARY_PATH=${LIBRARY_PATH:+$LIBRARY_PATH:}/opt/homebrew/lib
 
   # CocoaPods
-  export CP_HOME_DIR="$XDG_DATA_HOME"/cocoapods
+  export CP_HOME_DIR=$XDG_DATA_HOME/cocoapods
 
   # Matplotlib config dir
   export MPLCONFIGDIR=$XDG_CONFIG_HOME/matplotlib
