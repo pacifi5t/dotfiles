@@ -19,6 +19,7 @@ require("lazy").setup({
   "ellisonleao/gruvbox.nvim",
   "folke/neodev.nvim",
   "nvim-treesitter/nvim-treesitter",
+  "neovim/nvim-lspconfig",
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
