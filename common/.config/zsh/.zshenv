@@ -31,6 +31,7 @@ export PATH=$PATH:$PYENV_ROOT/bin
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
 export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
 export KERAS_HOME=$XDG_STATE_HOME/keras
+export PIPX_HOME=$XDG_DATA_HOME/pipx
 
 # RenPy saves directory
 export RENPY_PATH_TO_SAVES=$XDG_DATA_HOME/renpy
