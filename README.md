@@ -28,29 +28,39 @@ sudo sh -c "echo 'export ZDOTDIR=\$HOME/.config/zsh' >> /etc/zsh/zshenv"
 
 Oh My Zsh
 
-```zsh
+```sh
 ZSH=$HOME/.local/share/oh-my-zsh sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 `zsh-syntax-highlighting` plugin
 
-```zsh
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```sh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
 `powerlevel10k` prompt
 
-```zsh
+```sh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
 ### Link the dotfiles
 
-Clone the repo into `~/.local/share` directory (or any other you'd like)
+Clone this repo into `$HOME/.local/share/dotfiles` directory
 
 ```sh
-git clone https://github.com/pacifi5t/dotfiles ~/.local/share/dotfiles
+git clone https://github.com/pacifi5t/dotfiles $HOME/.local/share/dotfiles
 ```
+
+> [!NOTE]
+> You can use any directory you want, but you must export `DOTFILES_HOME` environment variable. Otherwise, the script `link_files.py` that creates symlinks for files will assume that dotfiles are in `$HOME/.local/share/dotfiles` directory.
+>
+> ```sh
+> export DOTFILES_HOME=/your/custom/path
+> git clone https://github.com/pacifi5t/dotfiles $DOTFILES_HOME
+> ```
+>
+> Don't forget to change `DOTFILES_HOME` variable in `common/.config/zsh/.zshenv`!
 
 Make sure you have Python 3 installed
 
@@ -58,8 +68,8 @@ Make sure you have Python 3 installed
 python3 --version
 ```
 
-Run `setup` script
+Run the `link_files.py` script
 
 ```sh
-./setup
+python3 scripts/link_files.py
 ```
