@@ -1,3 +1,7 @@
+[font]
+normal = { family = "FiraCode Nerd Font Mono", style = "Retina" }
+size = 14
+
 [keyboard]
 bindings = [
     { key = "Left", mods = "Option", chars = "\u001BB" },
