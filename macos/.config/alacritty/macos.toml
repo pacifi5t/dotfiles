@@ -1,0 +1,5 @@
+[keyboard]
+bindings = [
+    { key = "Left", mods = "Option", chars = "\u001BB" },
+    { key = "Right", mods = "Option", chars = "\u001BF" },
+]

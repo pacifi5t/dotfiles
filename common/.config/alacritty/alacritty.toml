@@ -1,0 +1,13 @@
+import = [
+    "~/.config/alacritty/macos.toml",
+]
+
+[window]
+opacity = 0.8
+
+[font]
+normal = { family = "FiraCode Nerd Font Mono", style = "Retina" }
+size = 14
+
+[cursor]
+style = { shape = "Beam" }
