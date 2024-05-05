@@ -3,6 +3,9 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CACHE_HOME=$HOME/.cache
 
+# dotfiles home dir
+export DOTFILES_HOME=$HOME/.local/share/dotfiles
+
 # Local binaries
 export PATH=$PATH:$HOME/.local/bin
 

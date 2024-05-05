@@ -53,7 +53,6 @@ alias va='source .venv/bin/activate'
 alias vd='deactivate'
 
 # Other
-alias dotfiles='cd $XDG_DATA_HOME/dotfiles'
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 alias rr='ranger'
 alias lg='lazygit'
