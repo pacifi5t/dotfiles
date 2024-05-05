@@ -29,27 +29,29 @@ sudo sh -c "echo 'export ZDOTDIR=\$HOME/.config/zsh' >> /etc/zsh/zshenv"
 Oh My Zsh
 
 ```sh
-ZSH=$HOME/.local/share/oh-my-zsh sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+export ZSH=$HOME/.local/share/oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 `zsh-syntax-highlighting` plugin
 
 ```sh
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$ZSH/custom}/plugins/zsh-syntax-highlighting
 ```
 
 `powerlevel10k` prompt
 
 ```sh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$ZSH/custom}/themes/powerlevel10k
 ```
 
 ### Link the dotfiles
 
-Clone this repo into `$HOME/.local/share/dotfiles` directory
+Clone this repo into `$HOME/.local/share/dotfiles` directory and change your current directory to it
 
 ```sh
 git clone https://github.com/pacifi5t/dotfiles $HOME/.local/share/dotfiles
+cd $HOME/.local/share/dotfiles
 ```
 
 > [!NOTE]
@@ -58,6 +60,7 @@ git clone https://github.com/pacifi5t/dotfiles $HOME/.local/share/dotfiles
 > ```sh
 > export DOTFILES_HOME=/your/custom/path
 > git clone https://github.com/pacifi5t/dotfiles $DOTFILES_HOME
+> ...
 > ```
 >
 > Don't forget to change `DOTFILES_HOME` variable in `common/.config/zsh/.zshenv`!
