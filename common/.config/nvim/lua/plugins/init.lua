@@ -15,8 +15,10 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup({
-  "savq/melange-nvim",
   "ellisonleao/gruvbox.nvim",
+  "Mofiqul/vscode.nvim",
+  "folke/tokyonight.nvim",
+  "sainnhe/sonokai",
   "folke/neodev.nvim",
   "nvim-treesitter/nvim-treesitter",
   "neovim/nvim-lspconfig",
