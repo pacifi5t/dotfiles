@@ -56,6 +56,7 @@ alias vd='deactivate'
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 alias rr='ranger'
 alias lg='lazygit'
+alias ff='fastfetch'
 
 # Initialize pyenv
 eval "$(pyenv init - 2> /dev/null)"

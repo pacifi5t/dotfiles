@@ -32,13 +32,18 @@ def list_files_to_symlinks(directory: str) -> list[tuple[str, str]]:
                 continue
 
             file_path = os.path.join(root, file)
-            symlink_path = os.path.join(
-                home, os.path.relpath(file_path, directory)
-            )
+            symlink_path = os.path.join(home, os.path.relpath(file_path, directory))
 
             file_symlink_tuples.append((file_path, symlink_path))
 
     return file_symlink_tuples
+
+
+def get_platform_dirname() -> str:
+    if platform == "darwin":
+        return "macos"
+    else:
+        return platform
 
 
 def main():
@@ -52,12 +57,8 @@ def main():
 
     common_dir = os.path.join(dotfiles_home, "common")
     file_symlink_tuples = list_files_to_symlinks(common_dir)
-    if platform == "linux":
-        linux_dir = os.path.join(dotfiles_home, "linux")
-        file_symlink_tuples += list_files_to_symlinks(linux_dir)
-    elif platform == "darwin":
-        macos_dir = os.path.join(dotfiles_home, "macos")
-        file_symlink_tuples += list_files_to_symlinks(macos_dir)
+    platform_dir = os.path.join(dotfiles_home, get_platform_dirname())
+    file_symlink_tuples += list_files_to_symlinks(platform_dir)
 
     for file_path, symlink_path in file_symlink_tuples:
         os.makedirs(os.path.dirname(symlink_path), exist_ok=True)
