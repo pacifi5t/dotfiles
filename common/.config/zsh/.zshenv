@@ -13,20 +13,17 @@ fi
 # dotfiles home dir
 export DOTFILES_HOME=$HOME/.local/share/dotfiles
 
-# Local binaries
-export PATH=$PATH:$HOME/.local/bin
-
 # Gradle home dir
 export GRADLE_USER_HOME=$XDG_DATA_HOME/gradle
 
 # Rust devtools
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export CARGO_HOME=$XDG_DATA_HOME/cargo
-export PATH=$PATH:$CARGO_HOME/bin
+export PATH=$CARGO_HOME/bin:$PATH
 
 # Flutter SDK
-export PATH=$PATH:$XDG_DATA_HOME/flutter/bin
-export PATH=$PATH:$HOME/.pub-cache/bin
+export PATH=$XDG_DATA_HOME/flutter/bin:$PATH
+export PATH=$HOME/.pub-cache/bin:$PATH
 
 # vcpkg main dir
 export VCPKG_ROOT=$XDG_DATA_HOME/vcpkg
@@ -37,7 +34,7 @@ export NODE_REPL_HISTORY=$XDG_DATA_HOME/node_repl_history
 
 # Python
 export PYENV_ROOT=$XDG_DATA_HOME/pyenv
-export PATH=$PATH:$PYENV_ROOT/bin
+export PATH=$PYENV_ROOT/bin:$PATH
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
 export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
 export KERAS_HOME=$XDG_STATE_HOME/keras
@@ -78,7 +75,7 @@ fi
 # macOS specific variables
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # adb for Android
-  export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+  export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 
   # Path for libraries installed with Homebrew
   export LIBRARY_PATH=${LIBRARY_PATH:+$LIBRARY_PATH:}/opt/homebrew/lib
@@ -92,3 +89,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # Rust std library path
   export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH:+$DYLD_LIBRARY_PATH:}$XDG_DATA_HOME/rustup/toolchains/stable-$CPUARCH-apple-darwin/lib
 fi
+
+# Local binaries
+export PATH=$HOME/.local/bin:$PATH
+
+# Remove duplicates in PATH
+typeset -U PATH
