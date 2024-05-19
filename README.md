@@ -4,8 +4,6 @@ A repo with various config files with setup guide. Useful for Linux with `zsh` a
 
 ## Setup
 
-### Migrating from bash
-
 Make sure you have `zsh` installed
 
 ```sh
@@ -18,13 +16,14 @@ Change your shell to `zsh`
 chsh -s /bin/zsh
 ```
 
-Change Zsh config directory by defining ZDOTDIR at `/etc/zsh/zshenv` (or `/etc/zshenv` for some systems)
+Change Zsh config directory by defining `ZDOTDIR` at the top of `/etc/zsh/zshenv` (or `/etc/zshenv` for some systems)
 
 ```sh
-sudo sh -c "echo 'export ZDOTDIR=\$HOME/.config/zsh' >> /etc/zsh/zshenv"
+export ZDOTDIR=$HOME/.config/zsh
+...
 ```
 
-### Installing Oh My Zsh & plugins
+## Installing Oh My Zsh & plugins
 
 Oh My Zsh
 
@@ -36,16 +35,16 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 `zsh-syntax-highlighting` plugin
 
 ```sh
-git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$ZSH/custom}/plugins/zsh-syntax-highlighting
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
 ```
 
 `powerlevel10k` prompt
 
 ```sh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$ZSH/custom}/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH/custom/themes/powerlevel10k
 ```
 
-### Link the dotfiles
+## Linking the dotfiles
 
 Clone this repo into `$HOME/.local/share/dotfiles` directory and change your current directory to it
 
@@ -55,7 +54,7 @@ cd $HOME/.local/share/dotfiles
 ```
 
 > [!NOTE]
-> You can use any directory you want, but you must export `DOTFILES_HOME` environment variable. Otherwise, the script `link_files.py` that creates symlinks for files will assume that dotfiles are in `$HOME/.local/share/dotfiles` directory.
+> You can use any directory you want, but you must export `DOTFILES_HOME` environment variable. Otherwise, the script `link-files.py` that creates symlinks for files will assume that dotfiles are in `$HOME/.local/share/dotfiles` directory.
 >
 > ```sh
 > export DOTFILES_HOME=/your/custom/path
@@ -71,8 +70,8 @@ Make sure you have Python 3 installed
 python3 --version
 ```
 
-Run the `link_files.py` script
+Run the `link-files.py` script
 
 ```sh
-python3 scripts/link_files.py
+python3 scripts/link-files.py
 ```
