@@ -4,13 +4,15 @@ A repo with various config files with setup guide. Useful for Linux with `zsh` a
 
 ## Setup
 
+### Zsh as a default shell
+
 Make sure you have `zsh` installed
 
 ```sh
 zsh --version
 ```
 
-Change your shell to `zsh`
+Change your login shell to `zsh`
 
 ```sh
 chsh -s /bin/zsh
@@ -23,28 +25,16 @@ export ZDOTDIR=$HOME/.config/zsh
 ...
 ```
 
-## Installing Oh My Zsh & plugins
+### Oh My Zsh
 
-Oh My Zsh
+Install Oh My Zsh by running the snippet below. The `ZSH` variable specifies where Oh My Zsh will be installed.
 
 ```sh
 export ZSH=$HOME/.local/share/oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-`zsh-syntax-highlighting` plugin
-
-```sh
-git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
-```
-
-`powerlevel10k` prompt
-
-```sh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH/custom/themes/powerlevel10k
-```
-
-## Linking the dotfiles
+### Linking the dotfiles
 
 Clone this repo into `$HOME/.local/share/dotfiles` directory and change your current directory to it
 
