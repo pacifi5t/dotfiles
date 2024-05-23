@@ -5,11 +5,33 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Path to your oh-my-zsh installation.
-export ZSH=$XDG_DATA_HOME/oh-my-zsh
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# Zsh history file
-export HISTFILE=$XDG_STATE_HOME/zsh/history
+if [[ ! -d "$ZINIT_HOME" ]]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Plugins
+zinit snippet OMZL::compfix.zsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::history.zsh
+zinit snippet OMZL::key-bindings.zsh
+
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+
+autoload -Uz compinit && compinit
+
+# History configuration
+HISTFILE="${XDG_STATE_HOME}/zsh/history"
+setopt inc_append_history
+
+# Completion styling
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # Prompt customization
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -19,15 +41,6 @@ else
   ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vi'
@@ -35,24 +48,13 @@ else
   export EDITOR='nvim'
 fi
 
-# Increase history size
-export HISTSIZE=1000
-export SAVEHIST=100000
-
-# Append history incrementally
-setopt incappendhistory
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
 # Python, pip, venv shortcuts
 alias vv='python -m venv .venv'
 alias va='source .venv/bin/activate'
 alias vd='deactivate'
 
 # Other
+alias ls='ls -G'
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 alias rr='ranger'
 alias lg='lazygit'
@@ -61,6 +63,9 @@ alias ff='fastfetch'
 # Initialize pyenv
 eval "$(pyenv init - 2> /dev/null)"
 
+# Other options
+setopt interactive_comments
+setopt long_list_jobs
+
 # To customize prompt, run `p10k configure` or edit .p10k.zsh.
-p10k_path=$XDG_DATA_HOME/dotfiles/common/.config/zsh/.p10k.zsh
-[[ ! -f $p10k_path ]] || source $p10k_path
+[[ ! -f "${ZDOTDIR}/.p10k.zsh" ]] || source "${ZDOTDIR}/.p10k.zsh"
