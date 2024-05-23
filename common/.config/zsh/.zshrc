@@ -77,8 +77,5 @@ alias rr='ranger'
 alias lg='lazygit'
 alias ff='fastfetch'
 
-# Initialize pyenv
-eval "$(pyenv init - 2> /dev/null)"
-
 # To customize prompt, run `p10k configure` or edit .p10k.zsh.
 [[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source $ZDOTDIR/.p10k.zsh
