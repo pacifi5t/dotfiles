@@ -8,13 +8,13 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=$XDG_DATA_HOME/oh-my-zsh
 
-# Zsh history file
-export HISTFILE=$XDG_STATE_HOME/zsh/history
+# Change the auto-update behavior
+zstyle ':omz:update' mode disabled  # other values: auto, reminder
 
 # Prompt customization
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 if [[ "$TTY" == "/dev/tty"* && "$OSTYPE" == "linux-gnu"* ]]; then
-  PS1='%F{cyan}%~%f %# '
+  PROMPT='%F{cyan}%~%f %# '
 else
   ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
@@ -23,8 +23,20 @@ fi
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-syntax-highlighting)
+plugins=()
+
+custom-plugin () {
+  local name="$(basename $1)"
+  local plugin_path="$ZSH/custom/plugins/$name"
+  if [[ ! -d "$plugin_path" ]]; then
+    echo "Plugin $name not found. Downloading..."
+    git clone --quiet --depth 1 https://github.com/${1}.git $plugin_path
+  fi
+  plugins+=($name)
+}
+
+custom-plugin zsh-users/zsh-syntax-highlighting
+custom-plugin zsh-users/zsh-completions
 
 source $ZSH/oh-my-zsh.sh
 
@@ -35,12 +47,19 @@ else
   export EDITOR='nvim'
 fi
 
+# Zsh history file
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+if [[ ! -f "$HISTFILE" ]]; then
+  mkdir -p $(dirname $HISTFILE)
+  touch $HISTFILE
+fi
+
 # Increase history size
-export HISTSIZE=1000
-export SAVEHIST=100000
+HISTSIZE=10000
+SAVEHIST=100000
 
 # Append history incrementally
-setopt incappendhistory
+setopt inc_append_history
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -62,5 +81,4 @@ alias ff='fastfetch'
 eval "$(pyenv init - 2> /dev/null)"
 
 # To customize prompt, run `p10k configure` or edit .p10k.zsh.
-p10k_path=$XDG_DATA_HOME/dotfiles/common/.config/zsh/.p10k.zsh
-[[ ! -f $p10k_path ]] || source $p10k_path
+[[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source $ZDOTDIR/.p10k.zsh
