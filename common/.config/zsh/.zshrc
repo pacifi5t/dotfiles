@@ -19,6 +19,13 @@ else
   ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
+# Download Powerlevel10k automatically if it's absent
+if [[ ! -d "$ZSH/custom/themes/powerlevel10k" ]]; then
+  echo "Powerlevel10k prompt not found. Downloading..."
+  mkdir -p $ZSH/custom/themes
+  git -C $ZSH/custom/themes clone --quiet --depth 1 https://github.com/romkatv/powerlevel10k.git
+fi
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
