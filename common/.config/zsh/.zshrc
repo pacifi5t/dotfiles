@@ -47,12 +47,15 @@ custom-plugin zsh-users/zsh-completions
 
 source $ZSH/oh-my-zsh.sh
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vi'
-else
-  export EDITOR='nvim'
-fi
+# Preferred editors for local and remote sessions in order of priority
+editors=(nvim helix hx vim micro vi nano)
+for editor in ${editors[@]}; do
+  if [[ $(command -v $editor) ]]; then
+    export EDITOR=$editor
+    unset editor
+    break
+  fi
+done
 
 # Zsh history file
 HISTFILE="$XDG_STATE_HOME/zsh/history"
