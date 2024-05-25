@@ -3,12 +3,17 @@
 	email = thequasar7@gmail.com
 [core]
 	excludesFile = ~/.config/git/ignore
+	fsmonitor = true
 [pull]
 	rebase = false
 [alias]
+	force-push = push --force-with-lease
 	graph = log --graph --oneline --decorate
+	staash = stash --all
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[fetch]
+	writeCommitGraph = true
