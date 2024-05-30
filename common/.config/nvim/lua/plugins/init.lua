@@ -23,9 +23,9 @@ require("lazy").setup({
   "nvim-treesitter/nvim-treesitter",
   "neovim/nvim-lspconfig",
   'nvim-lualine/lualine.nvim',
+  "lewis6991/gitsigns.nvim",
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
   {
@@ -57,5 +57,14 @@ require("lazy").setup({
       { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
+  },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim"
+    },
+    config = true
   }
 })
