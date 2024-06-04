@@ -5,6 +5,9 @@ if [[ -f "/opt/homebrew/bin/brew" ]]; then
 
   # Add Homebrew-managed Zsh completions
   export FPATH=$FPATH:$(brew --prefix)/share/zsh/site-functions
+
+  # Disable Homebrew auto update
+  export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
 # Initialize pyenv
