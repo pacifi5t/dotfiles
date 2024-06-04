@@ -1,5 +1,8 @@
 import = ["~/.config/alacritty/linux.toml", "~/.config/alacritty/macos.toml"]
 
+[env]
+TERM = "xterm-256color"
+
 [window]
 opacity = 0.8
 
