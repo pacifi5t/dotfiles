@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Path to your oh-my-zsh installation.
 export ZSH=$XDG_DATA_HOME/oh-my-zsh
 
@@ -16,14 +9,7 @@ zstyle ':omz:update' mode disabled  # other values: auto, reminder
 if [[ "$TTY" == "/dev/tty"* && "$OSTYPE" == "linux-gnu"* ]]; then
   PROMPT='%F{cyan}%~%f %# '
 else
-  ZSH_THEME="powerlevel10k/powerlevel10k"
-fi
-
-# Download Powerlevel10k automatically if it's absent
-if [[ ! -d "$ZSH/custom/themes/powerlevel10k" ]]; then
-  echo "Powerlevel10k prompt not found. Downloading..."
-  mkdir -p $ZSH/custom/themes
-  git -C $ZSH/custom/themes clone --quiet --depth 1 https://github.com/romkatv/powerlevel10k.git
+  eval "$(oh-my-posh init zsh --config  ${XDG_CONFIG_HOME}/oh-my-posh/default.json)"
 fi
 
 # Which plugins would you like to load?
@@ -86,6 +72,3 @@ alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 alias rr='ranger'
 alias lg='lazygit'
 alias ff='fastfetch'
-
-# To customize prompt, run `p10k configure` or edit .p10k.zsh.
-[[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source $ZDOTDIR/.p10k.zsh

@@ -1,0 +1,108 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "version": 2,
+    "palette": {
+        "lightRed": "#F05050",
+        "red": "#FF0000",
+        "lightOrange": "#FF8050",
+        "orange": "#F64D26",
+        "lightYellow": "#FCEA5F",
+        "yellow": "#FDD448",
+        "lightGreen": "#A0F050",
+        "green": "#5ED600",
+        "celeste": "#87CEEB",
+        "skyBlue": "#80B0FF",
+        "lightBlue": "#00AEFF",
+        "dimBlue": "#0086AE"
+    },
+    "blocks": [
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "segments": [
+                {
+                    "type": "os",
+                    "style": "plain",
+                    "foreground": "white",
+                    "template": "{{.Icon}} "
+                },
+                {
+                    "type": "path",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground": "p:lightBlue",
+                    "properties": {
+                        "edge_format": "<b>%s</b>",
+                        "folder_format": "<p:dimBlue>%s</>",
+                        "style": "powerlevel",
+                        "max_width": 32
+                    },
+                    "template": "{{if matchP .Path \"~\"}}{{else}}{{if .Writable}}{{else}}{{end}}{{end}} {{.Path}} "
+                },
+                {
+                    "type": "git",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground": "white",
+                    "properties": {
+                        "fetch_status": true,
+                        "branch_icon": " ",
+                        "commit_icon": "󰜘 ",
+                        "tag_icon": "󰓹 ",
+                        "branch_max_length": 24
+                    },
+                    "templates": [
+                        "<p:lightOrange>{{.HEAD}}</> ",
+                        "<p:lightOrange>{{if .Behind}}{{.Behind}}{{end}}{{if .Ahead}}{{.Ahead}}{{end}}</>{{if or .Behind .Ahead}} {{end}}",
+                        "{{if .StashCount}}<p:lightOrange>{{.StashCount}}</> {{end}}",
+                        "{{if .Staging.Changed}}<p:lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</> {{end}}",
+                        "{{if .Working.Modified}}<lightYellow>~{{.Working.Modified}}</> {{end}}",
+                        "{{if .Working.Deleted}}<p:lightRed>-{{.Working.Deleted}}</> {{end}}",
+                        "{{if .Working.Untracked}}<p:skyBlue>?{{.Working.Untracked}}</> {{end}}"
+                    ]
+                },
+                {
+                    "type": "status",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground_templates": [
+                        "{{if .Error}}p:red{{else}}p:green{{end}}"
+                    ],
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "template": "❯ "
+                }
+            ]
+        },
+        {
+            "type": "rprompt",
+            "alignment": "left",
+            "overflow": "hidden",
+            "segments": [
+                {
+                    "type": "python",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground": "p:yellow",
+                    "properties": {
+                        "display_default": false
+                    },
+                    "template": " {{if .Error}}{{.Error}} {{else}}{{if .Venv}}{{.Venv}}{{else}}{{.Full}}{{end}}{{end}}"
+                },
+                {
+                    "type": "session",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground": "p:celeste",
+                    "template": "{{if .SSHSession}}  <b>{{.UserName}}</b>  {{.HostName}}{{ end }}"
+                }
+            ]
+        }
+    ],
+    "secondary_prompt": {
+        "background": "transparent",
+        "foreground": "yellow",
+        "template": "❯❯ "
+    }
+}
