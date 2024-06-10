@@ -34,6 +34,14 @@ export ZSH=$HOME/.local/share/oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
+### Oh My Posh
+
+Install Oh My Posh by running the snippet below. You can choose any directory listed in the `PATH` variable instead of `$HOME/.local/bin`. The installer may prompt you to install some dependencies if they aren't installed yet.
+
+```sh
+curl -s https://ohmyposh.dev/install.sh | sh -s -- -d $HOME/.local/bin
+```
+
 ### Linking the dotfiles
 
 Clone this repo into `$HOME/.local/share/dotfiles` directory and change your current directory to it
