@@ -1,0 +1,75 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "version": 2,
+    "blocks": [
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "segments": [
+                {
+                    "type": "path",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground": "lightCyan",
+                    "properties": {
+                        "style": "powerlevel",
+                        "max_width": 32
+                    },
+                    "template": "{{.Path}} "
+                },
+                {
+                    "type": "git",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground": "white",
+                    "properties": {
+                        "fetch_status": true,
+                        "branch_icon": "",
+                        "commit_icon": "",
+                        "tag_icon": "",
+                        "branch_max_length": 24
+                    },
+                    "templates": [
+                        "<green>{{.HEAD}}</> ",
+                        "{{if .StashCount}}<green>*{{.StashCount}}</> {{end}}",
+                        "{{if .Staging.Changed}}<lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</> {{end}}",
+                        "{{if .Working.Modified}}<lightYellow>~{{.Working.Modified}}</> {{end}}",
+                        "{{if .Working.Deleted}}<lightRed>-{{.Working.Deleted}}</> {{end}}",
+                        "{{if .Working.Untracked}}<lightBlue>?{{.Working.Untracked}}</> {{end}}"
+                    ]
+                },
+                {
+                    "type": "status",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground_templates": [
+                        "{{if .Error}}lightRed{{else}}lightGreen{{end}}"
+                    ],
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "template": ">> "
+                }
+            ]
+        },
+        {
+            "type": "rprompt",
+            "alignment": "left",
+            "overflow": "hidden",
+            "segments": [
+                {
+                    "type": "session",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground": "cyan",
+                    "template": "{{if .SSHSession}}{{.UserName}}@{{.HostName}}{{ end }}"
+                }
+            ]
+        }
+    ],
+    "secondary_prompt": {
+        "background": "transparent",
+        "foreground": "yellow",
+        "template": ">>> "
+    }
+}

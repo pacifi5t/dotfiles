@@ -6,8 +6,8 @@ zstyle ':omz:update' mode disabled  # other values: auto, reminder
 
 # Prompt customization
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-if [[ "$TTY" == "/dev/tty"* && "$OSTYPE" == "linux-gnu"* ]]; then
-  PROMPT='%F{cyan}%~%f %# '
+if [[ "$TTY" == "/dev/tty"* && "$OSTYPE" == "linux-"* ]]; then
+  eval "$(oh-my-posh init zsh --config  ${XDG_CONFIG_HOME}/oh-my-posh/tty.json)"
 else
   eval "$(oh-my-posh init zsh --config  ${XDG_CONFIG_HOME}/oh-my-posh/default.json)"
 fi
