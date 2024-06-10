@@ -43,18 +43,15 @@
                     "type": "git",
                     "style": "plain",
                     "background": "transparent",
-                    "foreground": "white",
+                    "foreground": "p:lightOrange",
                     "properties": {
                         "fetch_status": true,
-                        "branch_icon": " ",
-                        "commit_icon": "󰜘 ",
-                        "tag_icon": "󰓹 ",
                         "branch_max_length": 24
                     },
                     "templates": [
-                        "<p:lightOrange>{{.HEAD}}</> ",
-                        "<p:lightOrange>{{if .Behind}}{{.Behind}}{{end}}{{if .Ahead}}{{.Ahead}}{{end}}</>{{if or .Behind .Ahead}} {{end}}",
-                        "{{if .StashCount}}<p:lightOrange>{{.StashCount}}</> {{end}}",
+                        // FIXME: merge, rebase, cherry pick and revert are not supported
+                        "{{if not .Detached}} {{.Ref}}{{else}}{{if matchP .Ref \"(detached)\"}}󰜘 {{trunc 7 .Commit.Sha}}{{else}}󰓹 {{.Ref}}{{end}}{{end}} ",
+                        "{{if .Behind}}{{.Behind}} {{end}}{{if .Ahead}}{{.Ahead}} {{end}}{{if .StashCount}}󰆦{{.StashCount}} {{end}}",
                         "{{if .Staging.Changed}}<p:lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</> {{end}}",
                         "{{if .Working.Modified}}<lightYellow>~{{.Working.Modified}}</> {{end}}",
                         "{{if .Working.Deleted}}<p:lightRed>-{{.Working.Deleted}}</> {{end}}",
