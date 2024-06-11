@@ -23,12 +23,11 @@
                     "background": "transparent",
                     "foreground": "green",
                     "properties": {
-                        "fetch_status": true,
-                        "branch_max_length": 24
+                        "fetch_status": true
                     },
                     "templates": [
                         // FIXME: merge, rebase, cherry pick and revert are not supported
-                        "{{if not .Detached}}{{.Ref}}{{else}}{{if matchP .Ref \"(detached)\"}}@{{trunc 7 .Commit.Sha}}{{else}}#{{.Ref}}{{end}}{{end}} ",
+                        "{{if not .Detached}}{{trunc 24 .Ref}}{{else}}{{if matchP .Ref \"(detached)\"}}@{{trunc 7 .Commit.Sha}}{{else}}#{{.Ref}}{{end}}{{end}} ",
                         "{{if .Behind}}↓{{.Behind}} {{end}}{{if .Ahead}}↑{{.Ahead}} {{end}}{{if .StashCount}}*{{.StashCount}} {{end}}",
                         "{{if .Staging.Changed}}<lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</> {{end}}",
                         "{{if .Working.Modified}}<lightYellow>~{{.Working.Modified}}</> {{end}}",
