@@ -9,36 +9,54 @@
                 {
                     "type": "path",
                     "style": "plain",
-                    "background": "transparent",
                     "foreground": "lightCyan",
                     "properties": {
-                        "style": "powerlevel",
-                        "max_width": 32
+                        "style": "full"
                     },
                     "template": "{{.Path}} "
                 },
                 {
                     "type": "git",
                     "style": "plain",
-                    "background": "transparent",
                     "foreground": "green",
                     "properties": {
-                        "fetch_status": true
+                        "fetch_status": true,
+                        "branch_icon": "",
+                        "commit_icon": "<white>@</>",
+                        "tag_icon": "<white>#</>"
                     },
                     "templates": [
-                        // FIXME: merge, rebase, cherry pick and revert are not supported
-                        "{{if not .Detached}}{{trunc 24 .Ref}}{{else}}{{if matchP .Ref \"(detached)\"}}@{{trunc 7 .Commit.Sha}}{{else}}#{{.Ref}}{{end}}{{end}} ",
+                        "{{ replaceP \" ?detached at ?\" .HEAD \"\" }} ",
                         "{{if .Behind}}↓{{.Behind}} {{end}}{{if .Ahead}}↑{{.Ahead}} {{end}}{{if .StashCount}}*{{.StashCount}} {{end}}",
                         "{{if .Staging.Changed}}<lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</> {{end}}",
                         "{{if .Working.Modified}}<lightYellow>~{{.Working.Modified}}</> {{end}}",
                         "{{if .Working.Deleted}}<lightRed>-{{.Working.Deleted}}</> {{end}}",
                         "{{if .Working.Untracked}}<lightBlue>?{{.Working.Untracked}}</> {{end}}"
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "type": "prompt",
+            "alignment": "right",
+            "overflow": "hide",
+            "segments": [
+                {
+                    "type": "session",
+                    "style": "plain",
+                    "foreground": "cyan",
+                    "template": "{{if .SSHSession}}{{.UserName}}@{{.HostName}}{{ end }}"
+                }
+            ]
+        },
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "newline": true,
+            "segments": [
                 {
                     "type": "status",
                     "style": "plain",
-                    "background": "transparent",
                     "foreground_templates": [
                         "{{if .Error}}lightRed{{else}}lightGreen{{end}}"
                     ],
@@ -51,22 +69,25 @@
         },
         {
             "type": "rprompt",
-            "alignment": "left",
-            "overflow": "hidden",
+            "alignment": "right",
+            "overflow": "hide",
             "segments": [
                 {
-                    "type": "session",
+                    "type": "executiontime",
                     "style": "plain",
-                    "background": "transparent",
-                    "foreground": "cyan",
-                    "template": "{{if .SSHSession}}{{.UserName}}@{{.HostName}}{{ end }}"
+                    "properties": {
+                        "threshold": 5000
+                    },
+                    "templates": [
+                        "{{$S := (div .Ms 1000)}}{{if ge $S 3600}}{{div $S 3600}}h {{end}}",
+                        "{{$S := (div .Ms 1000)}}{{$rem := (mod $S 3600)}}{{if ge $S 60}}{{div $rem 60}}m {{end}}{{mod $rem 60}}s"
+                    ]
                 }
             ]
         }
     ],
     "secondary_prompt": {
-        "background": "transparent",
         "foreground": "yellow",
-        "template": ">>> "
+        "template": ">>   "
     }
 }
