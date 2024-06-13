@@ -9,6 +9,7 @@
 [alias]
 	force-push = push --force-with-lease
 	graph = log --graph --oneline --decorate
+	save = !git stash --all && git stash apply --quiet
 	staash = stash --all
 [filter "lfs"]
 	clean = git-lfs clean -- %f

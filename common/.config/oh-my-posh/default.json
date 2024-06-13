@@ -18,8 +18,10 @@
         "skyBlue": "#80B0FF",
         "lightBlue": "#00AEFF",
         "dimBlue": "#0086AE",
+        "dartBlue": "#5EC7F8",
         "dockerBlue": "#2395ED",
-        "luaBlue": "#3a3aca"
+        "luaBlue": "#3a68ca",
+        "phpPurple": "#7880c7"
     },
     "blocks": [
         {
@@ -96,6 +98,19 @@
                     ]
                 },
                 {
+                    "type": "dart",
+                    "style": "plain",
+                    "foreground": "p:dartBlue",
+                    "properties": {
+                        "display_mode": "context"
+                    },
+                    "templates_logic": "first_match",
+                    "templates": [
+                        "{{if .Error}}  {{.Error}}{{end}}",
+                        "  {{.Full}}"
+                    ]
+                },
+                {
                     "type": "ruby",
                     "style": "plain",
                     "foreground": "p:rubyRed",
@@ -148,6 +163,19 @@
                     ]
                 },
                 {
+                    "type": "php",
+                    "style": "plain",
+                    "foreground": "p:phpPurple",
+                    "properties": {
+                        "display_mode": "context"
+                    },
+                    "templates_logic": "first_match",
+                    "templates": [
+                        "{{if .Error}}  {{.Error}}{{end}}",
+                        "  {{.Full}}"
+                    ]
+                },
+                {
                     "type": "docker",
                     "style": "plain",
                     "foreground": "p:dockerBlue",
@@ -175,7 +203,7 @@
                     "properties": {
                         "always_enabled": true
                     },
-                    "template": "❯❯ "
+                    "template": "❯ "
                 }
             ]
         },
@@ -201,6 +229,6 @@
     ],
     "secondary_prompt": {
         "foreground": "yellow",
-        "template": "❯❯   "
+        "template": "❯❯ "
     }
 }
