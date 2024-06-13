@@ -11,6 +11,7 @@
         "yellow": "#FDD448",
         "lightGreen": "#A0F050",
         "green": "#5ED600",
+        "nodeGreen": "#4f9944",
         "celeste": "#87CEEB",
         "skyBlue": "#80B0FF",
         "lightBlue": "#00AEFF",
@@ -65,13 +66,43 @@
             "overflow": "hide",
             "segments": [
                 {
+                    "type": "rust",
+                    "style": "plain",
+                    "foreground": "p:orange",
+                    "properties": {
+                        "display_mode": "context"
+                    },
+                    "templates_logic": "first_match",
+                    "templates": [
+                        "{{if .Error}}<p:red> {{.Error}}</>{{end}}",
+                        "{{if .Prerelease}} {{.Prerelease}}{{end}} {{.Full}}"
+                    ]
+                },
+                {
                     "type": "python",
                     "style": "plain",
                     "foreground": "p:yellow",
                     "properties": {
-                        "display_default": false
+                        "display_mode": "context"
                     },
-                    "template": " {{if .Error}}{{.Error}} {{else}}{{if .Venv}}{{.Venv}}{{else}}{{.Full}}{{end}}{{end}}"
+                    "templates_logic": "first_match",
+                    "templates": [
+                        "{{if .Error}}<p:red>  {{.Error}}</>{{end}}",
+                        " {{if .Venv}} {{.Venv}}{{end}} {{.Full}}"
+                    ]
+                },
+                {
+                    "type": "node",
+                    "style": "plain",
+                    "foreground": "p:nodeGreen",
+                    "properties": {
+                        "display_mode": "context"
+                    },
+                    "templates_logic": "first_match",
+                    "templates": [
+                        "{{if .Error}}<p:red>  {{.Error}}</>{{end}}",
+                        "  {{.Full}}"
+                    ]
                 },
                 {
                     "type": "session",
