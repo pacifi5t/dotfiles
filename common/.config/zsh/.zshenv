@@ -32,6 +32,10 @@ export VCPKG_ROOT=$XDG_DATA_HOME/vcpkg
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export NODE_REPL_HISTORY=$XDG_DATA_HOME/node_repl_history
 
+# Bun
+export BUN_INSTALL=$XDG_DATA_HOME/bun
+export PATH=$BUN_INSTALL/bin:$PATH
+
 # Python
 export PYENV_ROOT=$XDG_DATA_HOME/pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
