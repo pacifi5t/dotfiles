@@ -43,7 +43,7 @@
                         "folder_format": "<p:dimBlue>%s</>",
                         "style": "full"
                     },
-                    "template": "{{if matchP .Path \"~\"}}{{else}}{{if .Writable}}{{else}}{{end}}{{end}} {{.Path}} "
+                    "template": "{{if matchP .Path \"~\"}}{{else}}{{if .Writable}}{{else}}{{end}}{{end}} {{replaceP \"~\" .Path \"<b>~</b>\"}} "
                 },
                 {
                     "type": "git",
