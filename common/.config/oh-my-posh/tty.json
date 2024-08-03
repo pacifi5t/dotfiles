@@ -13,7 +13,7 @@
                     "properties": {
                         "style": "full"
                     },
-                    "template": "{{.Path}} "
+                    "template": "{{.Path}}"
                 },
                 {
                     "type": "git",
@@ -26,12 +26,12 @@
                         "tag_icon": "<white>#</>"
                     },
                     "templates": [
-                        "{{ replaceP \" ?detached at ?\" .HEAD \"\" }} ",
-                        "{{if .Behind}}↓{{.Behind}} {{end}}{{if .Ahead}}↑{{.Ahead}} {{end}}{{if .StashCount}}*{{.StashCount}} {{end}}",
-                        "{{if .Staging.Changed}}<lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</> {{end}}",
-                        "{{if .Working.Modified}}<lightYellow>~{{.Working.Modified}}</> {{end}}",
-                        "{{if .Working.Deleted}}<lightRed>-{{.Working.Deleted}}</> {{end}}",
-                        "{{if .Working.Untracked}}<lightBlue>?{{.Working.Untracked}}</> {{end}}"
+                        " {{ replaceP \" ?detached at ?\" .HEAD \"\" }}",
+                        "{{if .Behind}} ↓{{.Behind}}{{end}}{{if .Ahead}} ↑{{.Ahead}}{{end}}{{if .StashCount}} *{{.StashCount}}{{end}}",
+                        "{{if .Staging.Changed}} <lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</>{{end}}",
+                        "{{if .Working.Modified}} <lightYellow>~{{.Working.Modified}}</>{{end}}",
+                        "{{if .Working.Deleted}} <lightRed>-{{.Working.Deleted}}</>{{end}}",
+                        "{{if .Working.Untracked}} <lightBlue>?{{.Working.Untracked}}</>{{end}}"
                     ]
                 }
             ]
@@ -64,24 +64,6 @@
                         "always_enabled": true
                     },
                     "template": ">> "
-                }
-            ]
-        },
-        {
-            "type": "rprompt",
-            "alignment": "right",
-            "overflow": "hide",
-            "segments": [
-                {
-                    "type": "executiontime",
-                    "style": "plain",
-                    "properties": {
-                        "threshold": 5000
-                    },
-                    "templates": [
-                        "{{$S := (div .Ms 1000)}}{{if ge $S 3600}}{{div $S 3600}}h {{end}}",
-                        "{{$S := (div .Ms 1000)}}{{$rem := (mod $S 3600)}}{{if ge $S 60}}{{div $rem 60}}m {{end}}{{mod $rem 60}}s"
-                    ]
                 }
             ]
         }

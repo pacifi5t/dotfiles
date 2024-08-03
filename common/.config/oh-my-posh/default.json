@@ -32,7 +32,7 @@
                     "type": "os",
                     "style": "plain",
                     "foreground": "white",
-                    "template": "{{.Icon}} "
+                    "template": "{{.Icon}}"
                 },
                 {
                     "type": "path",
@@ -43,7 +43,10 @@
                         "folder_format": "<p:dimBlue>%s</>",
                         "style": "full"
                     },
-                    "template": "{{if matchP .Path \"~\"}}{{else}}{{if .Writable}}{{else}}{{end}}{{end}} {{replaceP \"~\" .Path \"<b>~</b>\"}} "
+                    "templates": [
+                        " {{if matchP .Path \"~\"}}{{else}}{{if .Writable}}{{else}}{{end}}{{end}}",
+                        " {{replaceP \"^~\" .Path \"<b>~</b>\"}}"
+                    ]
                 },
                 {
                     "type": "git",
@@ -56,12 +59,12 @@
                         "tag_icon": "󰓹 "
                     },
                     "templates": [
-                        "{{ replaceP \"? ?detached at ?\" .HEAD \"\" }} ",
-                        "{{if .Behind}}{{.Behind}} {{end}}{{if .Ahead}}{{.Ahead}} {{end}}{{if .StashCount}}󰆦{{.StashCount}} {{end}}",
-                        "{{if .Staging.Changed}}<p:lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</> {{end}}",
-                        "{{if .Working.Modified}}<lightYellow>~{{.Working.Modified}}</> {{end}}",
-                        "{{if .Working.Deleted}}<p:lightRed>-{{.Working.Deleted}}</> {{end}}",
-                        "{{if .Working.Untracked}}<p:skyBlue>?{{.Working.Untracked}}</> {{end}}"
+                        " {{ replaceP \"? ?detached at ?\" .HEAD \"\" }}",
+                        "{{if .Behind}} {{.Behind}}{{end}}{{if .Ahead}} {{.Ahead}}{{end}}{{if .StashCount}} 󰆦{{.StashCount}}{{end}}",
+                        "{{if .Staging.Changed}} <p:lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</>{{end}}",
+                        "{{if .Working.Modified}} <p:lightYellow>~{{.Working.Modified}}</>{{end}}",
+                        "{{if .Working.Deleted}} <p:lightRed>-{{.Working.Deleted}}</>{{end}}",
+                        "{{if .Working.Untracked}} <p:skyBlue>?{{.Working.Untracked}}</>{{end}}"
                     ]
                 }
             ]
@@ -72,19 +75,6 @@
             "overflow": "hide",
             "segments": [
                 {
-                    "type": "rust",
-                    "style": "plain",
-                    "foreground": "p:rustOrange",
-                    "properties": {
-                        "display_mode": "context"
-                    },
-                    "templates_logic": "first_match",
-                    "templates": [
-                        "{{if .Error}} {{.Error}}{{end}}",
-                        "{{if .Prerelease}} {{.Prerelease}}{{end}} {{.Full}}"
-                    ]
-                },
-                {
                     "type": "python",
                     "style": "plain",
                     "foreground": "p:pythonYellow",
@@ -93,86 +83,8 @@
                     },
                     "templates_logic": "first_match",
                     "templates": [
-                        "{{if .Error}}  {{.Error}}{{end}}",
-                        " {{if .Venv}} {{.Venv}}{{end}} {{.Full}}"
-                    ]
-                },
-                {
-                    "type": "dart",
-                    "style": "plain",
-                    "foreground": "p:dartBlue",
-                    "properties": {
-                        "display_mode": "context"
-                    },
-                    "templates_logic": "first_match",
-                    "templates": [
-                        "{{if .Error}}  {{.Error}}{{end}}",
-                        "  {{.Full}}"
-                    ]
-                },
-                {
-                    "type": "ruby",
-                    "style": "plain",
-                    "foreground": "p:rubyRed",
-                    "properties": {
-                        "display_mode": "context"
-                    },
-                    "templates_logic": "first_match",
-                    "templates": [
-                        "{{if .Error}} 󰴭 {{.Error}}{{end}}",
-                        " 󰴭 {{.Full}}"
-                    ]
-                },
-                {
-                    "type": "go",
-                    "style": "plain",
-                    "foreground": "p:goCyan",
-                    "properties": {
-                        "display_mode": "context"
-                    },
-                    "templates_logic": "first_match",
-                    "templates": [
-                        "{{if .Error}}  {{.Error}}{{end}}",
-                        "  {{.Full}}"
-                    ]
-                },
-                {
-                    "type": "lua",
-                    "style": "plain",
-                    "foreground": "p:luaBlue",
-                    "properties": {
-                        "display_mode": "context"
-                    },
-                    "templates_logic": "first_match",
-                    "templates": [
-                        "{{if .Error}} 󰢱 {{.Error}}{{end}}",
-                        " 󰢱 {{.Full}}"
-                    ]
-                },
-                {
-                    "type": "node",
-                    "style": "plain",
-                    "foreground": "p:nodeGreen",
-                    "properties": {
-                        "display_mode": "context"
-                    },
-                    "templates_logic": "first_match",
-                    "templates": [
-                        "{{if .Error}}  {{.Error}}{{end}}",
-                        "  {{.Full}}"
-                    ]
-                },
-                {
-                    "type": "php",
-                    "style": "plain",
-                    "foreground": "p:phpPurple",
-                    "properties": {
-                        "display_mode": "context"
-                    },
-                    "templates_logic": "first_match",
-                    "templates": [
-                        "{{if .Error}}  {{.Error}}{{end}}",
-                        "  {{.Full}}"
+                        "{{if .Venv}}  {{.Venv}} {{.Full}}{{end}}",
+                        "{{if readFile \".python-version\"}}  {{.Full}}{{end}}"
                     ]
                 },
                 {
@@ -204,25 +116,6 @@
                         "always_enabled": true
                     },
                     "template": "❯ "
-                }
-            ]
-        },
-        {
-            "type": "rprompt",
-            "alignment": "right",
-            "overflow": "hide",
-            "segments": [
-                {
-                    "type": "executiontime",
-                    "style": "plain",
-                    "foreground": "p:biscue",
-                    "properties": {
-                        "threshold": 5000
-                    },
-                    "templates": [
-                        "󱦟 {{$S := (div .Ms 1000)}}{{if ge $S 3600}}{{div $S 3600}}h {{end}}",
-                        "{{$S := (div .Ms 1000)}}{{$rem := (mod $S 3600)}}{{if ge $S 60}}{{div $rem 60}}m {{end}}{{mod $rem 60}}s"
-                    ]
                 }
             ]
         }
