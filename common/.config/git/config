@@ -3,7 +3,7 @@
 	email = thequasar7@gmail.com
 [core]
 	excludesFile = ~/.config/git/ignore
-	fsmonitor = true
+	fsmonitor = false
 [pull]
 	rebase = false
 [alias]
