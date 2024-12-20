@@ -1,76 +1,81 @@
 {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "version": 2,
-    "disable_notice": true,
-    "blocks": [
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "secondary_prompt": {
+    "template": ">>   ",
+    "foreground": "yellow"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
         {
-            "type": "prompt",
-            "alignment": "left",
-            "segments": [
-                {
-                    "type": "path",
-                    "style": "plain",
-                    "foreground": "lightCyan",
-                    "properties": {
-                        "style": "full"
-                    },
-                    "template": "{{.Path}}"
-                },
-                {
-                    "type": "git",
-                    "style": "plain",
-                    "foreground": "green",
-                    "properties": {
-                        "fetch_status": true,
-                        "branch_icon": "",
-                        "commit_icon": "<white>@</>",
-                        "tag_icon": "<white>#</>"
-                    },
-                    "templates": [
-                        " {{ replaceP \" ?detached at ?\" .HEAD \"\" }}",
-                        "{{if .Behind}} ↓{{.Behind}}{{end}}{{if .Ahead}} ↑{{.Ahead}}{{end}}{{if .StashCount}} *{{.StashCount}}{{end}}",
-                        "{{if .Staging.Changed}} <lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</>{{end}}",
-                        "{{if .Working.Modified}} <lightYellow>~{{.Working.Modified}}</>{{end}}",
-                        "{{if .Working.Deleted}} <lightRed>-{{.Working.Deleted}}</>{{end}}",
-                        "{{if .Working.Untracked}} <lightBlue>?{{.Working.Untracked}}</>{{end}}"
-                    ]
-                }
-            ]
+          "properties": {
+            "cache_duration": "none",
+            "style": "full"
+          },
+          "template": "{{.Path}}",
+          "foreground": "lightCyan",
+          "type": "path",
+          "style": "plain"
         },
         {
-            "type": "prompt",
-            "alignment": "right",
-            "overflow": "hide",
-            "segments": [
-                {
-                    "type": "session",
-                    "style": "plain",
-                    "foreground": "cyan",
-                    "template": "{{if .SSHSession}}{{.UserName}}@{{.HostName}}{{ end }}"
-                }
-            ]
-        },
-        {
-            "type": "prompt",
-            "alignment": "left",
-            "newline": true,
-            "segments": [
-                {
-                    "type": "status",
-                    "style": "plain",
-                    "foreground_templates": [
-                        "{{if .Error}}lightRed{{else}}lightGreen{{end}}"
-                    ],
-                    "properties": {
-                        "always_enabled": true
-                    },
-                    "template": ">> "
-                }
-            ]
+          "properties": {
+            "branch_icon": "",
+            "cache_duration": "none",
+            "commit_icon": "<white>@</>",
+            "fetch_status": true,
+            "tag_icon": "<white>#</>"
+          },
+          "foreground": "green",
+          "type": "git",
+          "style": "plain",
+          "templates": [
+            " {{ replaceP \" ?detached at ?\" .HEAD \"\" }}",
+            "{{if .Behind}} ↓{{.Behind}}{{end}}{{if .Ahead}} ↑{{.Ahead}}{{end}}{{if .StashCount}} *{{.StashCount}}{{end}}",
+            "{{if .Staging.Changed}} <lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</>{{end}}",
+            "{{if .Working.Modified}} <lightYellow>~{{.Working.Modified}}</>{{end}}",
+            "{{if .Working.Deleted}} <lightRed>-{{.Working.Deleted}}</>{{end}}",
+            "{{if .Working.Untracked}} <lightBlue>?{{.Working.Untracked}}</>{{end}}"
+          ]
         }
-    ],
-    "secondary_prompt": {
-        "foreground": "yellow",
-        "template": ">>   "
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "overflow": "hide",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{if .SSHSession}}{{.UserName}}@{{.HostName}}{{ end }}",
+          "foreground": "cyan",
+          "type": "session",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "always_enabled": true,
+            "cache_duration": "none"
+          },
+          "template": ">> ",
+          "type": "status",
+          "style": "plain",
+          "foreground_templates": [
+            "{{if .Error}}lightRed{{else}}lightGreen{{end}}"
+          ]
+        }
+      ],
+      "newline": true
     }
+  ],
+  "version": 3
 }

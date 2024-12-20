@@ -1,128 +1,140 @@
 {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "version": 2,
-    "disable_notice": true,
-    "palette": {
-        "lightRed": "#F05050",
-        "red": "#FF0000",
-        "rubyRed": "#CB342C",
-        "lightOrange": "#FF8050",
-        "rustOrange": "#F64D26",
-        "biscue": "#ffe4c4",
-        "lightYellow": "#FCEA5F",
-        "pythonYellow": "#FDD448",
-        "lightGreen": "#A0F050",
-        "green": "#5ED600",
-        "nodeGreen": "#4f9944",
-        "celeste": "#87CEEB",
-        "goCyan": "#73CDDC",
-        "skyBlue": "#80B0FF",
-        "lightBlue": "#00AEFF",
-        "dimBlue": "#0086AE",
-        "dartBlue": "#5EC7F8",
-        "dockerBlue": "#2395ED",
-        "luaBlue": "#3a68ca",
-        "phpPurple": "#7880c7"
-    },
-    "blocks": [
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "biscue": "#ffe4c4",
+    "celeste": "#87CEEB",
+    "dartBlue": "#5EC7F8",
+    "dimBlue": "#0086AE",
+    "dockerBlue": "#2395ED",
+    "goCyan": "#73CDDC",
+    "green": "#5ED600",
+    "lightBlue": "#00AEFF",
+    "lightGreen": "#A0F050",
+    "lightOrange": "#FF8050",
+    "lightRed": "#F05050",
+    "lightYellow": "#FCEA5F",
+    "luaBlue": "#3a68ca",
+    "nodeGreen": "#4f9944",
+    "phpPurple": "#7880c7",
+    "pythonYellow": "#FDD448",
+    "red": "#FF0000",
+    "rubyRed": "#CB342C",
+    "rustOrange": "#F64D26",
+    "skyBlue": "#80B0FF"
+  },
+  "secondary_prompt": {
+    "template": "❯❯ ",
+    "foreground": "yellow"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
         {
-            "type": "prompt",
-            "alignment": "left",
-            "segments": [
-                {
-                    "type": "os",
-                    "style": "plain",
-                    "foreground": "white",
-                    "template": "{{.Icon}}"
-                },
-                {
-                    "type": "path",
-                    "style": "plain",
-                    "foreground": "p:lightBlue",
-                    "properties": {
-                        "edge_format": "<b>%s</b>",
-                        "folder_format": "<p:dimBlue>%s</>",
-                        "style": "full"
-                    },
-                    "templates": [
-                        " {{if matchP .Path \"~\"}}{{else}}{{if .Writable}}{{else}}{{end}}{{end}}",
-                        " {{replaceP \"^~\" .Path \"<b>~</b>\"}}"
-                    ]
-                },
-                {
-                    "type": "git",
-                    "style": "plain",
-                    "foreground": "p:lightOrange",
-                    "properties": {
-                        "fetch_status": true,
-                        "branch_icon": " ",
-                        "commit_icon": "󰜘",
-                        "tag_icon": "󰓹 "
-                    },
-                    "templates": [
-                        " {{ replaceP \"? ?detached at ?\" .HEAD \"\" }}",
-                        "{{if .Behind}} {{.Behind}}{{end}}{{if .Ahead}} {{.Ahead}}{{end}}{{if .StashCount}} 󰆦{{.StashCount}}{{end}}",
-                        "{{if .Staging.Changed}} <p:lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</>{{end}}",
-                        "{{if .Working.Modified}} <p:lightYellow>~{{.Working.Modified}}</>{{end}}",
-                        "{{if .Working.Deleted}} <p:lightRed>-{{.Working.Deleted}}</>{{end}}",
-                        "{{if .Working.Untracked}} <p:skyBlue>?{{.Working.Untracked}}</>{{end}}"
-                    ]
-                }
-            ]
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{.Icon}}",
+          "foreground": "white",
+          "type": "os",
+          "style": "plain"
         },
         {
-            "type": "prompt",
-            "alignment": "right",
-            "overflow": "hide",
-            "segments": [
-                {
-                    "type": "python",
-                    "style": "plain",
-                    "foreground": "p:pythonYellow",
-                    "properties": {
-                        "display_mode": "context"
-                    },
-                    "templates_logic": "first_match",
-                    "templates": [
-                        "{{if .Venv}}  {{.Venv}} {{.Full}}{{end}}",
-                        "{{if readFile \".python-version\"}}  {{.Full}}{{end}}"
-                    ]
-                },
-                {
-                    "type": "docker",
-                    "style": "plain",
-                    "foreground": "p:dockerBlue",
-                    "template": " 󰡨 {{ .Context }}"
-                },
-                {
-                    "type": "session",
-                    "style": "plain",
-                    "foreground": "p:celeste",
-                    "template": "{{if .SSHSession}}  <b>{{.UserName}}</b>  {{.HostName}}{{ end }}"
-                }
-            ]
+          "properties": {
+            "cache_duration": "none",
+            "edge_format": "<b>%s</b>",
+            "folder_format": "<p:dimBlue>%s</>",
+            "style": "full"
+          },
+          "foreground": "p:lightBlue",
+          "type": "path",
+          "style": "plain",
+          "templates": [
+            " {{if matchP .Path \"~\"}}{{else}}{{if .Writable}}{{else}}{{end}}{{end}}",
+            " {{replaceP \"^~\" .Path \"<b>~</b>\"}}"
+          ]
         },
         {
-            "type": "prompt",
-            "alignment": "left",
-            "newline": true,
-            "segments": [
-                {
-                    "type": "status",
-                    "style": "plain",
-                    "foreground_templates": [
-                        "{{if .Error}}p:red{{else}}p:green{{end}}"
-                    ],
-                    "properties": {
-                        "always_enabled": true
-                    },
-                    "template": "❯ "
-                }
-            ]
+          "properties": {
+            "branch_icon": " ",
+            "cache_duration": "none",
+            "commit_icon": "󰜘",
+            "fetch_status": true,
+            "tag_icon": "󰓹 "
+          },
+          "foreground": "p:lightOrange",
+          "type": "git",
+          "style": "plain",
+          "templates": [
+            " {{ replaceP \"? ?detached at ?\" .HEAD \"\" }}",
+            "{{if .Behind}} {{.Behind}}{{end}}{{if .Ahead}} {{.Ahead}}{{end}}{{if .StashCount}} 󰆦{{.StashCount}}{{end}}",
+            "{{if .Staging.Changed}} <p:lightGreen>+{{add .Staging.Modified .Staging.Added .Staging.Deleted}}</>{{end}}",
+            "{{if .Working.Modified}} <p:lightYellow>~{{.Working.Modified}}</>{{end}}",
+            "{{if .Working.Deleted}} <p:lightRed>-{{.Working.Deleted}}</>{{end}}",
+            "{{if .Working.Untracked}} <p:skyBlue>?{{.Working.Untracked}}</>{{end}}"
+          ]
         }
-    ],
-    "secondary_prompt": {
-        "foreground": "yellow",
-        "template": "❯❯ "
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "overflow": "hide",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "context"
+          },
+          "foreground": "p:pythonYellow",
+          "templates_logic": "first_match",
+          "type": "python",
+          "style": "plain",
+          "templates": [
+            "{{if .Venv}}  {{.Venv}} {{.Full}}{{end}}",
+            "{{if readFile \".python-version\"}}  {{.Full}}{{end}}"
+          ]
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " 󰡨 {{ .Context }}",
+          "foreground": "p:dockerBlue",
+          "type": "docker",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{if .SSHSession}}  <b>{{.UserName}}</b>  {{.HostName}}{{ end }}",
+          "foreground": "p:celeste",
+          "type": "session",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "always_enabled": true,
+            "cache_duration": "none"
+          },
+          "template": "❯ ",
+          "type": "status",
+          "style": "plain",
+          "foreground_templates": [
+            "{{if .Error}}p:red{{else}}p:green{{end}}"
+          ]
+        }
+      ],
+      "newline": true
     }
+  ],
+  "version": 3
 }
