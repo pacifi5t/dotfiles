@@ -32,9 +32,6 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": "{{.Icon}}",
           "foreground": "white",
           "type": "os",
@@ -42,7 +39,6 @@
         },
         {
           "properties": {
-            "cache_duration": "none",
             "edge_format": "<b>%s</b>",
             "folder_format": "<p:dimBlue>%s</>",
             "style": "full"
@@ -58,7 +54,6 @@
         {
           "properties": {
             "branch_icon": " ",
-            "cache_duration": "none",
             "commit_icon": "󰜘",
             "fetch_status": true,
             "tag_icon": "󰓹 "
@@ -84,31 +79,20 @@
       "segments": [
         {
           "properties": {
-            "cache_duration": "none",
-            "display_mode": "context"
+            "display_mode": "environment"
           },
+          "template": "  {{if .Venv}}{{.Venv}} {{end}}{{.Full}}",
           "foreground": "p:pythonYellow",
-          "templates_logic": "first_match",
           "type": "python",
-          "style": "plain",
-          "templates": [
-            "{{if .Venv}}  {{.Venv}} {{.Full}}{{end}}",
-            "{{if readFile \".python-version\"}}  {{.Full}}{{end}}"
-          ]
+          "style": "plain"
         },
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": " 󰡨 {{ .Context }}",
           "foreground": "p:dockerBlue",
           "type": "docker",
           "style": "plain"
         },
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": "{{if .SSHSession}}  <b>{{.UserName}}</b>  {{.HostName}}{{ end }}",
           "foreground": "p:celeste",
           "type": "session",
@@ -122,8 +106,7 @@
       "segments": [
         {
           "properties": {
-            "always_enabled": true,
-            "cache_duration": "none"
+            "always_enabled": true
           },
           "template": "❯ ",
           "type": "status",
