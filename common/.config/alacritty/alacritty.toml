@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/linux.toml", "~/.config/alacritty/macos.toml"]
+general.import = ["~/.config/alacritty/linux.toml", "~/.config/alacritty/macos.toml"]
 
 [env]
 TERM = "xterm-256color"
