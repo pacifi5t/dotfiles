@@ -18,3 +18,7 @@
 	required = true
 [fetch]
 	writeCommitGraph = true
+[submodule]
+	recurse = true
+[push]
+	recurseSubmodules = on-demand
