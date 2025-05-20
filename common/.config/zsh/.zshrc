@@ -2,14 +2,14 @@
 export ZSH=$XDG_DATA_HOME/oh-my-zsh
 
 # Change the auto-update behavior
-zstyle ':omz:update' mode disabled  # other values: auto, reminder
+zstyle ':omz:update' mode disabled # other values: auto, reminder
 
 # Prompt customization
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 if [[ "$TTY" == "/dev/tty"* && "$OSTYPE" == "linux-"* ]]; then
-  eval "$(oh-my-posh init zsh --config  ${XDG_CONFIG_HOME}/oh-my-posh/tty.json)"
+  eval "$(oh-my-posh init zsh --config ${XDG_CONFIG_HOME}/oh-my-posh/tty.json)"
 else
-  eval "$(oh-my-posh init zsh --config  ${XDG_CONFIG_HOME}/oh-my-posh/default.json)"
+  eval "$(oh-my-posh init zsh --config ${XDG_CONFIG_HOME}/oh-my-posh/default.json)"
 fi
 
 # Which plugins would you like to load?
@@ -18,7 +18,7 @@ fi
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=()
 
-custom-plugin () {
+custom-plugin() {
   local name="$(basename $1)"
   local plugin_path="$ZSH/custom/plugins/$name"
   if [[ ! -d "$plugin_path" ]]; then
