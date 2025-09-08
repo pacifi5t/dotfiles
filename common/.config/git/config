@@ -4,6 +4,7 @@
 [core]
 	excludesFile = ~/.config/git/ignore
 	fsmonitor = true
+	pager = delta
 [pull]
 	rebase = false
 [alias]
@@ -22,3 +23,7 @@
 	recurse = true
 [push]
 	recurseSubmodules = on-demand
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
