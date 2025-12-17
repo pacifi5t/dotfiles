@@ -4,12 +4,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CACHE_HOME=$HOME/.cache
 
-# CPU architecture
-export CPUARCH="$(uname -m)"
-if [[ "$CPUARCH" == "arm64" ]]; then
-  export CPUARCH="aarch64"
-fi
-
 # dotfiles home dir
 export DOTFILES_HOME=$HOME/.local/share/dotfiles
 
@@ -74,9 +68,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   # GTK2 config
   export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
-
-  # Rust std library path
-  export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$XDG_DATA_HOME/rustup/toolchains/stable-$CPUARCH-unknown-linux-gnu/lib
 fi
 
 # macOS specific variables
@@ -92,9 +83,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   # Matplotlib config dir
   export MPLCONFIGDIR=$XDG_CONFIG_HOME/matplotlib
-
-  # Rust std library path
-  export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH:+$DYLD_LIBRARY_PATH:}$XDG_DATA_HOME/rustup/toolchains/stable-$CPUARCH-apple-darwin/lib
 fi
 
 # Local binaries
