@@ -10,7 +10,7 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
+          "options": {
             "style": "full"
           },
           "template": "{{.Path}}",
@@ -19,7 +19,7 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "branch_icon": "",
             "commit_icon": "<white>@</>",
             "fetch_status": true,
@@ -57,7 +57,7 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
+          "options": {
             "always_enabled": true
           },
           "template": ">> ",

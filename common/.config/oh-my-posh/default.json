@@ -38,7 +38,7 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "edge_format": "<b>%s</b>",
             "folder_format": "<p:dimBlue>%s</>",
             "style": "full"
@@ -52,7 +52,7 @@
           ]
         },
         {
-          "properties": {
+          "options": {
             "branch_icon": " ",
             "commit_icon": "󰜘",
             "fetch_status": true,
@@ -78,7 +78,7 @@
       "overflow": "hide",
       "segments": [
         {
-          "properties": {
+          "options": {
             "display_mode": "environment"
           },
           "template": "  {{if .Venv}}{{.Venv}} {{end}}{{.Full}}",
@@ -105,15 +105,13 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
+          "options": {
             "always_enabled": true
           },
           "template": "❯ ",
           "type": "status",
           "style": "plain",
-          "foreground_templates": [
-            "{{if .Error}}p:red{{else}}p:green{{end}}"
-          ]
+          "foreground_templates": ["{{if .Error}}p:red{{else}}p:green{{end}}"]
         }
       ],
       "newline": true
