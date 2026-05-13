@@ -7,8 +7,8 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "diff_view_style": "unified",
   "terminal": {
-    "toolbar": {},
     "blinking": "on",
     "cursor_shape": "bar",
   },
@@ -32,25 +32,15 @@
     "dock": "left",
   },
   "bottom_dock_layout": "contained",
-  "tab_bar": {
-    "show_pinned_tabs_in_separate_row": false,
-  },
   "tabs": {
     "file_icons": true,
     "git_status": true,
-  },
-  "title_bar": {},
-  "status_bar": {
-    "show_active_file": false,
   },
   "search": {
     "regex": true,
   },
   "diagnostics": {
     "inline": {},
-  },
-  "inlay_hints": {
-    "enabled": true,
   },
   "soft_wrap": "editor_width",
   "vim": {
@@ -68,11 +58,15 @@
     "metrics": false,
     "diagnostics": false,
   },
-  "ui_font_size": 15.0,
-  "buffer_font_size": 13.0,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark",
+  "ui_font_size": 16.0,
+  "buffer_font_size": 14.0,
+  "theme": "One Dark",
+  "profiles": {
+    "Laptop": {
+      "settings": {
+        "ui_font_size": 15.0,
+        "buffer_font_size": 13.0,
+      },
+    },
   },
 }
